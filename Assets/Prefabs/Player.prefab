@@ -85,7 +85,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   preJumpAllowanceTime: 0.1
-  standJumpData: {fileID: 11400000, guid: 2fcb36d1793b144a989175198b1d9d9a, type: 2}
+  standJumpData: {fileID: 11400000, guid: d789969eb9ef74a3cbe15b58d6833c16, type: 2}
   runJumpData: {fileID: 11400000, guid: 2fcb36d1793b144a989175198b1d9d9a, type: 2}
   sprintJumpData: {fileID: 11400000, guid: 2fcb36d1793b144a989175198b1d9d9a, type: 2}
   brakeJumpData: {fileID: 11400000, guid: 2fcb36d1793b144a989175198b1d9d9a, type: 2}

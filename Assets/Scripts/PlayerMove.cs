@@ -35,10 +35,9 @@ public class PlayerMove : MonoBehaviour {
 			moveData = brakeData;
 		} else if (!groundCheck.OnGround) {
 			moveData = airData;
-		} else if ((Input.GetAxis("Sprint") > 0 && Mathf.Abs(horizontal) > 0.001f) || curSpeed > runData.MaxSpeed) {
+		} else if ((Input.GetAxis("Sprint") >= 0.001f && Mathf.Abs(horizontal) > 0.001f) || curSpeed > runData.MaxSpeed) {
 			moveData = sprintData;
 		}
-
 		
 		if (!tryMove || facingWrongDirection) {
 			moveStartTime = Time.time;
@@ -53,7 +52,14 @@ public class PlayerMove : MonoBehaviour {
 			} else if (moveData == airData) {
 				velX = Mathf.Max(curSpeed, moveData.GetSpeed(moveDuration)) * direction;
 				transform.right = Vector3.right * direction;
-			}else {
+			} else if (moveData == sprintData) {
+				if (Input.GetAxis("Sprint") < 0.001) {
+					velX = moveData.ApplyDampening(velX);
+				} else {
+					velX = moveData.GetSpeed(moveDuration) * direction;
+					transform.right = Vector3.right * direction;
+				}
+			} else {
 				velX = moveData.GetSpeed(moveDuration) * direction;
 				transform.right = Vector3.right * direction;
 			}

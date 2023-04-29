@@ -2,7 +2,9 @@ using UnityEngine;
 
 [CreateAssetMenu(menuName = "Crunk/JumpData")]
 public class JumpData : ScriptableObject {
+	public bool useGlobalJumpArc = false;
 	public AnimationCurve jumpArc = null;
+	public AnimationCurve JumpArc => useGlobalJumpArc && GlobalData.Instance != null ? GlobalData.Instance.defaultJumpArc : jumpArc;
 	public float minHeight = 5f;
 	public float maxHeight = 15f;
 	public float maxJumpDuration = 1f;
@@ -35,19 +37,19 @@ public class JumpData : ScriptableObject {
 			jumpDone = true;
 		}
 
-		var height = jumpArc.Evaluate(scaledJumpTime) * (heightScale / finalHeight);
+		var height = JumpArc.Evaluate(scaledJumpTime) * (heightScale / finalHeight);
 		return (height, jumpDone);
 	}
 
 	public Keyframe GetLastKeyframe() {
 		// TODO Do AnimationCurves sort keyframes by time?
 		var lastKeyframe = 0;
-		for (int i = 0; i < jumpArc.keys.Length; i++) {
-			if (jumpArc.keys[i].time > jumpArc.keys[lastKeyframe].time) {
+		for (int i = 0; i < JumpArc.keys.Length; i++) {
+			if (JumpArc.keys[i].time > JumpArc.keys[lastKeyframe].time) {
 				lastKeyframe = i;
 			}
 		}
 
-		return jumpArc.keys[lastKeyframe];
+		return JumpArc.keys[lastKeyframe];
 	}
 }

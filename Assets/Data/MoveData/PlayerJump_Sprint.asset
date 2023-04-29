@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 736720a26eef64b389123267ff9ceb6e, type: 3}
-  m_Name: PlayerJump_Run
+  m_Name: PlayerJump_Sprint
   m_EditorClassIdentifier: 
   useGlobalJumpArc: 1
   jumpArc:
@@ -28,7 +28,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  minHeight: 4
-  maxHeight: 8
-  maxJumpDuration: 0.75
+  minHeight: 5
+  maxHeight: 10
+  maxJumpDuration: 0.5
   maxHoldDuration: 0.5

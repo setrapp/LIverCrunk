@@ -74,7 +74,7 @@ public class PlayerJump : MonoBehaviour {
 
 	JumpData pickJump() {
 		if (groundCheck.OnGround) {
-			if (mover.ActiveMoveData == mover.runData) { return runJumpData; }
+			if (mover.ActiveMoveData == mover.runData && Mathf.Abs(body.velocity.x) > 0.001f) { return runJumpData; }
 			if (mover.ActiveMoveData == mover.sprintData) { return sprintJumpData; }
 			if (mover.ActiveMoveData == mover.brakeData) { return brakeJumpData; }
 		}
@@ -109,7 +109,7 @@ public class PlayerJump : MonoBehaviour {
 		bool show1 = !show123 && !show3 && !show2;
 		//Debug.Log("" + show123 + " " + show3 + " " + show2 + " " + show1);
 		
-		var resolution = 10;
+		var resolution = 20;
 		var standColor = Color.white;
 		var runColor = Color.blue;
 		var sprintColor = Color.green;
@@ -183,18 +183,53 @@ public class PlayerJump : MonoBehaviour {
 	List<Vector3> sampleJumpArc(JumpData data, int resolution, float moveSpeed, bool fullHold, bool show1, bool show2, bool show3)
 	{
 		var points = new List<Vector3>();
-		if (data.maxJumpDuration >= 0.001f) {
-			if (show1) {
-				var timeStep = data.maxJumpDuration / resolution;
-				for (int i = 0; i < resolution; i++) {
-					var sampleTime = timeStep * i;
-					(var height, bool jumpDone) = data.GetHeight(sampleTime, fullHold ? data.maxJumpDuration : 0);
-					points.Add(transform.position + new Vector3(moveSpeed * sampleTime, height, 0));
+		if (resolution > 0) {
+			var height = 0f;
+			var jumpDone = false;
+			if (data.maxJumpDuration >= 0.001f) {
+				if (show1) {
+					var timeStep = data.maxJumpDuration / resolution;
+					for (int i = 0; i < resolution; i++) {
+						var sampleTime = timeStep * i;
+						(height, jumpDone) = data.GetHeight(sampleTime, fullHold ? data.maxJumpDuration : 0);
+						points.Add(transform.position + new Vector3(moveSpeed * sampleTime, height, 0));
+					}
+
+					addGravityToArc(points, timeStep, moveSpeed);
 				}
+
+				if (show2) { }
+
+				if (show3) { }
 			}
 		}
 
 		return points;
+	}
+
+	void addGravityToArc(List<Vector3> points, float timeStep, float moveSpeed) {
+		if (points == null || points.Count < 1) { return; }
+
+		var x = points[points.Count - 1].x;
+		var height = points[points.Count - 1].y;
+		var minHeight = height - 100;
+		var fallVel = 0f;
+		var arcDone = false;
+
+		while (!arcDone) {
+			fallVel += Physics.gravity.y * timeStep; // TODO Not accounting for drag
+			height += fallVel * timeStep;
+			x += moveSpeed * timeStep;
+			var testPoint = new Vector3(x, height, 0);
+			var step = (testPoint - points[points.Count - 1]);
+			var stepDist = step.magnitude;
+
+			if (height < minHeight || Physics.Raycast(points[points.Count - 1], step / stepDist, stepDist)) {
+				arcDone = true;
+			}
+
+			points.Add(testPoint);
+		}
 	}
 #endif
 }

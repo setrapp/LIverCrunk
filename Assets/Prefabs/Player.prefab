@@ -39,7 +39,7 @@ Transform:
   - {fileID: 3141974818344462719}
   - {fileID: 9038894634021789961}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7369234720251720113
 MonoBehaviour:
@@ -88,8 +88,8 @@ MonoBehaviour:
   preJumpAllowanceTime: 0.1
   standJumpData: {fileID: 11400000, guid: d789969eb9ef74a3cbe15b58d6833c16, type: 2}
   runJumpData: {fileID: 11400000, guid: 2fcb36d1793b144a989175198b1d9d9a, type: 2}
-  sprintJumpData: {fileID: 11400000, guid: 2fcb36d1793b144a989175198b1d9d9a, type: 2}
-  brakeJumpData: {fileID: 11400000, guid: 2fcb36d1793b144a989175198b1d9d9a, type: 2}
+  sprintJumpData: {fileID: 11400000, guid: 2b81644b1369342a3970114707413258, type: 2}
+  brakeJumpData: {fileID: 11400000, guid: dbace9349496642f1b2d687e5a7b4140, type: 2}
 --- !u!114 &5664516909234364502
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,7 +152,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 120
   m_CollisionDetection: 0
 --- !u!1 &1865603976098015557
 GameObject:

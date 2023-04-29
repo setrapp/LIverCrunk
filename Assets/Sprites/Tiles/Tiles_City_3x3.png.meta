@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5046a80c434628f459b3f880d8c5e4bb
+guid: 3712a84e22744994a895245568fb9d68
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -49,7 +49,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 64
-  spriteBorder: {x: 512, y: 515, z: 512, w: 529}
+  spriteBorder: {x: 512, y: 512, z: 512, w: 512}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -107,7 +107,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: TileSheet_
+      name: Tiles_City_3x3_0
       rect:
         serializedVersion: 2
         x: 0
@@ -121,14 +121,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6ae558b2d2901f149abd73bb7c89741c
-      internalID: 809000497
+      spriteID: 81d9fe15eabf49a4796ceaefae3ab11c
+      internalID: -685493473
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TileSheet_1
+      name: Tiles_City_3x3_1
       rect:
         serializedVersion: 2
         x: 512
@@ -142,14 +142,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 618072ddba09d2b4482ab91caad5ca19
-      internalID: 1760176027
+      spriteID: 7b69067bfc8483544a4ff293f31a79cb
+      internalID: -1495757969
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TileSheet_2
+      name: Tiles_City_3x3_2
       rect:
         serializedVersion: 2
         x: 1024
@@ -163,14 +163,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a4d6a90735e27a74cb5204eb869a8838
-      internalID: -811683067
+      spriteID: 7cd59f1f94deae24bb197576a1c8fa35
+      internalID: 687460935
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TileSheet_3
+      name: Tiles_City_3x3_3
       rect:
         serializedVersion: 2
         x: 0
@@ -184,14 +184,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dce0d66fb61c4a94f9d17926ca407c1b
-      internalID: -716310163
+      spriteID: fcdf0923a42c0d442965c4a7b8179ac2
+      internalID: -7388048
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TileSheet_4
+      name: Tiles_City_3x3_4
       rect:
         serializedVersion: 2
         x: 512
@@ -205,14 +205,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 625db63d83affd341a9fc2fa13bad26c
-      internalID: 676833986
+      spriteID: 9e8c2e78e8504f142ba1e36b379ebd99
+      internalID: 605603770
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TileSheet_5
+      name: Tiles_City_3x3_5
       rect:
         serializedVersion: 2
         x: 1024
@@ -226,14 +226,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e8c75b89751824549a932e3c973e4899
-      internalID: 467892877
+      spriteID: 24694094a498e0d4d8540a454d85bdfe
+      internalID: 1448156397
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TileSheet_6
+      name: Tiles_City_3x3_6
       rect:
         serializedVersion: 2
         x: 0
@@ -247,14 +247,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 98e1cbf6d875f794483f44ddf6cbd1ff
-      internalID: -1293352701
+      spriteID: 1d3c596d5126a52418fd7a8207199cb3
+      internalID: 55344677
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TileSheet_7
+      name: Tiles_City_3x3_7
       rect:
         serializedVersion: 2
         x: 512
@@ -268,14 +268,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 72dcf2f68793e424a9cd7da8723af2a7
-      internalID: -713049666
+      spriteID: 8af6b317d56510744831b6a282aab6ab
+      internalID: 817587321
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TileSheet_9
+      name: Tiles_City_3x3_8
       rect:
         serializedVersion: 2
         x: 1024
@@ -289,8 +289,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 613820c3b0694aa4a908d09fe73ccf9f
-      internalID: -1331844239
+      spriteID: cd757b550aa06f94e8d952a9f0fc904d
+      internalID: -246481051
       vertices: []
       indices: 
       edges: []
@@ -306,15 +306,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      TileSheet_: 809000497
-      TileSheet_1: 1760176027
-      TileSheet_2: -811683067
-      TileSheet_3: -716310163
-      TileSheet_4: 676833986
-      TileSheet_5: 467892877
-      TileSheet_6: -1293352701
-      TileSheet_7: -713049666
-      TileSheet_9: -1331844239
+      Tiles_City_3x3_0: -685493473
+      Tiles_City_3x3_1: -1495757969
+      Tiles_City_3x3_2: 687460935
+      Tiles_City_3x3_3: -7388048
+      Tiles_City_3x3_4: 605603770
+      Tiles_City_3x3_5: 1448156397
+      Tiles_City_3x3_6: 55344677
+      Tiles_City_3x3_7: 817587321
+      Tiles_City_3x3_8: -246481051
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

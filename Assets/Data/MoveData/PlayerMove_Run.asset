@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 24c1c99132466413f9f2b7a80804603d, type: 3}
-  m_Name: PlayerBrake
+  m_Name: PlayerMove_Run
   m_EditorClassIdentifier: 
-  maxSpeed: 0
-  dampening: 1
+  maxSpeed: 15
+  dampening: 10

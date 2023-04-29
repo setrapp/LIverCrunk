@@ -1,16 +1,18 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(Rigidbody), typeof(GroundCheck))]
 public class PlayerMove : MonoBehaviour {
 	private Rigidbody body = null;
+	private GroundCheck groundCheck = null;
 	public Transform render = null;
 	public MoveData runData = null;
 	public MoveData sprintData = null;
 	public MoveData brakeData = null;
-	// public MoveData airData = null;
+	public MoveData airData = null;
 	
 	void Start() {
 		body = GetComponent<Rigidbody>();
+		groundCheck = GetComponent<GroundCheck>();
 	}
 
 	void Update() {
@@ -21,7 +23,9 @@ public class PlayerMove : MonoBehaviour {
 		var curSpeed = Mathf.Abs(velX);
 
 		var moveData = runData;
-		if ((velX > runData.MaxSpeed && horizontal < 0) || (velX < -runData.MaxSpeed && horizontal > 0)) {
+		if (!groundCheck.OnGround) {
+			moveData = airData;
+		} else if ((velX > runData.MaxSpeed && horizontal < 0) || (velX < -runData.MaxSpeed && horizontal > 0)) {
 			moveData = brakeData;
 		} else if ((Input.GetAxis("Sprint") > 0 && Mathf.Abs(horizontal) > 0.001f) || curSpeed > runData.MaxSpeed) {
 			moveData = sprintData;
@@ -31,7 +35,10 @@ public class PlayerMove : MonoBehaviour {
 			if (moveData == brakeData) {
 				velX = moveData.ApplyDampening(velX);
 				transform.right = Vector3.right * (velX < 0 ? -1 : 1);
-			} else {
+			} else if (moveData == airData) {
+				velX = Mathf.Max(curSpeed, moveData.GetSpeed()) * direction;
+				transform.right = Vector3.right * direction;
+			}else {
 				velX = moveData.GetSpeed() * direction;
 				transform.right = Vector3.right * direction;
 			}
@@ -40,7 +47,7 @@ public class PlayerMove : MonoBehaviour {
 		}
 
 		var rotation = render.transform.rotation;
-		if (moveData == runData) {
+		if (moveData == runData) {// || moveData == airData) {
 			rotation.eulerAngles = new Vector3(rotation.eulerAngles.x, rotation.eulerAngles.y, 0);
 		}
 		if (moveData == sprintData) {

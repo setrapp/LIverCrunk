@@ -9,7 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8158446846250512527}
+  - component: {fileID: 7369234720251720113}
   - component: {fileID: 7223191459503524183}
+  - component: {fileID: 6616641022733581420}
   - component: {fileID: 7301971699091533239}
   m_Layer: 0
   m_Name: Player
@@ -34,6 +36,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7369234720251720113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1839164058954636815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93a6f3265ed6b489cbbf41d8a13d88f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  midRayLength: 1.01
+  sideRayLength: 1.01
+  sideRayOffset: 1
 --- !u!114 &7223191459503524183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50,6 +67,20 @@ MonoBehaviour:
   runData: {fileID: 11400000, guid: d84ea8e216ed441639282974d4ba12e4, type: 2}
   sprintData: {fileID: 11400000, guid: 4a375eb17cf3348d7a223540ba4fc288, type: 2}
   brakeData: {fileID: 11400000, guid: 9a4a42bf324084eccb7fc8a1c31cc818, type: 2}
+  airData: {fileID: 11400000, guid: 912b52d9dffa146a8a3067dda4e52c1f, type: 2}
+--- !u!114 &6616641022733581420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1839164058954636815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53a0daf5a46a24272ba15ae43f15f5dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  runJumpData: {fileID: 11400000, guid: 2fcb36d1793b144a989175198b1d9d9a, type: 2}
 --- !u!54 &7301971699091533239
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -2674,7 +2674,7 @@ ScriptedImporter:
     - {x: 25, y: 26}
     tessellationDetail: 0
     uvTransform: {x: 4, y: 652}
-    spritePosition: {x: 194, y: 10}
+    spritePosition: {x: 202, y: 10}
   - name: SmallTentacles
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -3003,7 +3003,7 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 178
+      x: 170
       y: 652
       width: 71
       height: 186
@@ -3350,8 +3350,8 @@ ScriptedImporter:
     - {x: 25, y: 26}
     - {x: 26, y: 27}
     tessellationDetail: 0
-    uvTransform: {x: 178, y: 652}
-    spritePosition: {x: 341, y: 14}
+    uvTransform: {x: 170, y: 652}
+    spritePosition: {x: 343, y: 15}
   - name: BackTentacle1
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -5175,7 +5175,7 @@ ScriptedImporter:
     parentIndex: -1
     spriteID: 16b27f996c3a1c043a6803b780044a9a
     layerID: 16
-    mosaicPosition: {x: 178, y: 652}
+    mosaicPosition: {x: 170, y: 652}
     flatten: 0
     isImported: 1
     isVisible: 1

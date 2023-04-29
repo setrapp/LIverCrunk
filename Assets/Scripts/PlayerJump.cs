@@ -83,7 +83,8 @@ public class PlayerJump : MonoBehaviour {
 	}
 
 	public string GetAnimParam() {
-		return "Idle";
+		//if (jumping) { return "Jump"; }
+		return "Jump";//"Idle";
 	}
 
 	void EndJump() {

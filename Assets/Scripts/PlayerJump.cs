@@ -48,8 +48,6 @@ public class PlayerJump : MonoBehaviour {
 		bool jumpDone = true;
 		if (jumping) {
 			jumpReady = false;
-			groundCheck.RespectGravity = false;
-			body.useGravity = false;
 
 			var jumpData = runJumpData;
 
@@ -64,6 +62,8 @@ public class PlayerJump : MonoBehaviour {
 				EndJump();
 			}
 		}
+
+		body.useGravity = !groundCheck.OnGround && !jumping;
 	}
 
 	public string GetAnimParam() {
@@ -79,6 +79,5 @@ public class PlayerJump : MonoBehaviour {
 		jumpStartTime = 0;
 		jumpHolding = false;
 		jumpHoldDuration = 0;
-		groundCheck.RespectGravity = true;
 	}
 }

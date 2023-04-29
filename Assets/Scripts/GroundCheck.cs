@@ -1,8 +1,6 @@
 using UnityEngine;
 
 public class GroundCheck : MonoBehaviour {
-	private Rigidbody body = null;
-
 	public float midRayLength = 1.01f;
 	public float sideRayLength = 1.01f;
 	public float sideRayOffset = 1f;
@@ -17,12 +15,6 @@ public class GroundCheck : MonoBehaviour {
 
 	public bool OnGround => midHit || backHit || frontHit;
 
-	public bool RespectGravity = true;
-
-	void Start() {
-		body = GetComponent<Rigidbody>();
-	}
-
 	void Update() {
 		midRay.origin = transform.position;
 		backRay.origin = transform.position + (transform.right * -sideRayOffset);
@@ -33,10 +25,6 @@ public class GroundCheck : MonoBehaviour {
 		midHit = Physics.Raycast(midRay.origin, midRay.direction, midRayLength, req_layer);
 		backHit = Physics.Raycast(backRay.origin, backRay.direction, sideRayLength, req_layer);
 		frontHit = Physics.Raycast(frontRay.origin, frontRay.direction, sideRayLength, req_layer);
-
-		if (body != null && RespectGravity) {
-			body.useGravity = !midHit;
-		}
 	}
 
 	void OnDrawGizmos() {

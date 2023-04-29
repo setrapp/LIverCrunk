@@ -27,6 +27,7 @@ public class GroundCheck : MonoBehaviour {
 		frontHit = Physics.Raycast(frontRay.origin, frontRay.direction, sideRayLength, req_layer);
 	}
 
+#if UNITY_EDITOR
 	void OnDrawGizmos() {
 		Gizmos.color = midHit ? Color.blue : Color.red;
 		Gizmos.DrawLine(midRay.origin, midRay.origin + (midRay.direction * midRayLength));
@@ -37,5 +38,6 @@ public class GroundCheck : MonoBehaviour {
 		Gizmos.color = frontHit ? Color.blue : Color.red;
 		Gizmos.DrawLine(frontRay.origin, frontRay.origin + (frontRay.direction * sideRayLength));
 	}
+#endif
 
 }

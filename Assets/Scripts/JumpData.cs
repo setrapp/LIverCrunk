@@ -9,16 +9,9 @@ public class JumpData : ScriptableObject {
 	public float maxHoldDuration = 0.5f;
 
 	public (float, bool) GetHeight(float jumpDuration, float holdDuration) {
-		// TODO Do AnimationCurves sort keyframes by time?
-		var last_keyframe = 0;
-		for (int i = 0; i < jumpArc.keys.Length; i++) {
-			if (jumpArc.keys[i].time > jumpArc.keys[last_keyframe].time) {
-				last_keyframe = i;
-			}
-		}
-
-		var finalTime = jumpArc.keys[last_keyframe].time;
-		var finalHeight = jumpArc.keys[last_keyframe].value;
+		var lastKeyframe = GetLastKeyframe();
+		var finalTime = lastKeyframe.time;
+		var finalHeight = lastKeyframe.value;
 
 		if (Mathf.Abs(finalTime) < 0.001f || Mathf.Abs(finalHeight) < 0.001f) {
 			return (0, true);
@@ -44,5 +37,17 @@ public class JumpData : ScriptableObject {
 
 		var height = jumpArc.Evaluate(scaledJumpTime) * (heightScale / finalHeight);
 		return (height, jumpDone);
+	}
+
+	public Keyframe GetLastKeyframe() {
+		// TODO Do AnimationCurves sort keyframes by time?
+		var lastKeyframe = 0;
+		for (int i = 0; i < jumpArc.keys.Length; i++) {
+			if (jumpArc.keys[i].time > jumpArc.keys[lastKeyframe].time) {
+				lastKeyframe = i;
+			}
+		}
+
+		return jumpArc.keys[lastKeyframe];
 	}
 }

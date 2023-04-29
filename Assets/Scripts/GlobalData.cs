@@ -7,11 +7,7 @@ public class GlobalData : ScriptableObject {
 
 	public AnimationCurve defaultJumpArc;
 
-	void OnEnable() {
-		if (instance != null && instance != this) {
-			Debug.Log("Multiple GlobalData exist... there can only be one", this);
-		}
-
+	public void Init() {
 		instance = this;
 	}
 }

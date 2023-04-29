@@ -59,14 +59,18 @@ public class PlayerJump : MonoBehaviour {
 			pos.y = jumpStartY + jumpHeight;
 
 			body.position = pos;
-		}
 
-		if (jumpDone) {
-			EndJump();
+			if (jumpDone) {
+				EndJump();
+			}
 		}
 	}
 
-	void OnCollisionEnter() {
+	public string GetAnimParam() {
+		return "Idle";
+	}
+
+	void OnCollisionEnter(Collision collision) {
 		EndJump();
 	}
 

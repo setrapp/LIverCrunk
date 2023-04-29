@@ -75,7 +75,7 @@ public class PlayerMove : MonoBehaviour {
 			rotation.eulerAngles = new Vector3(rotation.eulerAngles.x, rotation.eulerAngles.y, 0);
 		}
 		if (moveData == sprintData) {
-			rotation.eulerAngles = new Vector3(rotation.eulerAngles.x, rotation.eulerAngles.y, -45);
+			rotation.eulerAngles = new Vector3(rotation.eulerAngles.x, rotation.eulerAngles.y, 0);
 		}
 		if (moveData == brakeData && groundCheck.OnGround) {
 			rotation.eulerAngles = new Vector3(rotation.eulerAngles.x, rotation.eulerAngles.y, 25);
@@ -89,7 +89,7 @@ public class PlayerMove : MonoBehaviour {
 	public string GetAnimParam() {
 		if (Mathf.Abs(body.velocity.x) >= 0.001f) {
 			if (ActiveMoveData == runData) { return "Run"; }
-			else if (ActiveMoveData == sprintData) { return "Run"; }
+			else if (ActiveMoveData == sprintData) { return "RunFast"; }
 			else if (ActiveMoveData == brakeData) { return "Idle"; }
 		}
 

@@ -15,7 +15,7 @@ public class GroundCheck : MonoBehaviour {
 
 	public bool OnGround => midHit || backHit || frontHit;
 
-	void Update() {
+	void FixedUpdate() {
 		midRay.origin = transform.position;
 		backRay.origin = transform.position + (transform.right * -sideRayOffset);
 		frontRay.origin = transform.position + (transform.right * sideRayOffset);

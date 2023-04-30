@@ -34,7 +34,7 @@ public class PlayerJump : MonoBehaviour {
 		mover = GetComponent<PlayerMove>();
 	}
 
-	void Update() {
+	void FixedUpdate() {
 #if UNITY_EDITOR
 		if (Input.GetKeyDown("j")) { toggleJumpsShowing(!contextJumpShowing, false, false, false); }
 		if (Input.GetKeyDown("k")) { toggleJumpsShowing(false, !runJumpShowing, false, false); }

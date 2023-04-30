@@ -20,7 +20,7 @@ public class PlayerMove : MonoBehaviour {
 		groundCheck = GetComponent<GroundCheck>();
 	}
 
-	void Update() {
+	void FixedUpdate() {
 		var horizontal = Input.GetAxis("Horizontal");
 		var tryMove = Mathf.Abs(horizontal) >= 0.001f;
 		var direction = horizontal < 0 ? -1 : 1;

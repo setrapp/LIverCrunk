@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 [RequireComponent(typeof(GroundCheck), typeof(Rigidbody))]
 public class PlayerFeed : MonoBehaviour {
@@ -17,11 +18,11 @@ public class PlayerFeed : MonoBehaviour {
 	public bool IsFeeding => feeding;
 
 	public int maxLivers = 1;
-	private int eatenLivers = 0;
+	public List<Liver> EatenLivers = new List<Liver>();
 
 	private HarvestPoint harvestTarget = null;
 
-	public bool CanFeed => !IsFeeding && !groundCheck.OnGround && eatenLivers < maxLivers && (Time.time - lastFeedTime) > feedCooldown;
+	public bool CanFeed => !IsFeeding && !groundCheck.OnGround && EatenLivers.Count < maxLivers && (Time.time - lastFeedTime) > feedCooldown;
 
 	void Start() {
 		groundCheck = GetComponent<GroundCheck>();
@@ -59,13 +60,16 @@ public class PlayerFeed : MonoBehaviour {
 
 	public void TakeHarvest() {
 		if (harvestTarget != null) {
-			harvestTarget.Harvest();
+			var liver = harvestTarget.Harvest();
+			if (liver != null) {
+				liver.AwardPlayer(this);
+				EatenLivers.Add(liver);
+			}
 		}
 	}
 
 	public void EndFeed() {
 		feeding = false;
-		//eatenLivers += 1; // TODO maybe wait for aquire animation to finish;
 		lastFeedTime = Time.time;
 		body.isKinematic = false;
 		harvestTarget = null;

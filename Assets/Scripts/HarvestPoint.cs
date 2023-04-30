@@ -15,10 +15,12 @@ public class HarvestPoint : MonoBehaviour{
 		}
 	}
 
-	public bool Harvest() {
+	public Liver Harvest() {
 		die.Die();
-		//if (liver != null) {
-		return true;
+		if (liverPrefab != null) {
+			return Instantiate(liverPrefab, transform.position, Quaternion.identity);
+		}
+		return null;
 	}
 
 	void OnDrawGizmos() {

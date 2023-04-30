@@ -68,6 +68,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c80b6871a2da74ddebb9fcb5089e09fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnDie:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &8945511224213757121
 GameObject:
   m_ObjectHideFlags: 0
@@ -115,6 +118,7 @@ MonoBehaviour:
   harvestRadius: 10
   minHarvestHeight: 3
   die: {fileID: 3262337701114407534}
+  liverPrefab: {fileID: 7370166790417681846, guid: 19bd6869b601b439e8480bf843601afa, type: 3}
 --- !u!1001 &4447172669304871314
 PrefabInstance:
   m_ObjectHideFlags: 0

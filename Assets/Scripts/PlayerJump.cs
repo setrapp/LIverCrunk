@@ -14,12 +14,19 @@ public class PlayerJump : MonoBehaviour {
 	private float jumpHoldDuration = 0;
 	private bool jumpReady = false;
 	private float timeTryingJump = 0;
+	private JumpData jumpData = null;
+	public JumpData ActiveJumpData => jumpData;
 
 	public float preJumpAllowanceTime = 0.1f;
 	public JumpData standJumpData = null;
 	public JumpData runJumpData = null;
 	public JumpData sprintJumpData = null;
 	public JumpData brakeJumpData = null;
+
+	private bool contextJumpShowing = true;
+	private bool runJumpShowing = false;
+	private bool sprintJumpShowing = false;
+	private bool brakeJumpShowing = false;
 
 	void Start() {
 		body = GetComponent<Rigidbody>();
@@ -28,6 +35,13 @@ public class PlayerJump : MonoBehaviour {
 	}
 
 	void Update() {
+#if UNITY_EDITOR
+		if (Input.GetKeyDown("j")) { toggleJumpsShowing(!contextJumpShowing, false, false, false); }
+		if (Input.GetKeyDown("k")) { toggleJumpsShowing(false, !runJumpShowing, false, false); }
+		if (Input.GetKeyDown("l")) { toggleJumpsShowing(false, false, !sprintJumpShowing, false); }
+		if (Input.GetKeyDown("h")) { toggleJumpsShowing(false, false, false, !brakeJumpShowing); }
+#endif
+
 		bool tryJump = Input.GetAxis("Jump") > 0;
 		if (tryJump) {
 			timeTryingJump += Time.deltaTime;
@@ -55,7 +69,7 @@ public class PlayerJump : MonoBehaviour {
 		if (jumping) {
 			jumpReady = false;
 
-			var jumpData = pickJump();
+			jumpData = pickJump();
 
 			var pos = body.position;
 			var jumpHeight = 0f;
@@ -74,12 +88,15 @@ public class PlayerJump : MonoBehaviour {
 
 	JumpData pickJump() {
 		if (groundCheck.OnGround) {
-			if (mover.ActiveMoveData == mover.runData && Mathf.Abs(body.velocity.x) > 0.001f) { return runJumpData; }
+			if (mover.ActiveMoveData == mover.runData) {
+				if (Mathf.Abs(body.velocity.x) > 0.001f) { return runJumpData; }
+				else { return standJumpData; }
+			}
 			if (mover.ActiveMoveData == mover.sprintData) { return sprintJumpData; }
 			if (mover.ActiveMoveData == mover.brakeData) { return brakeJumpData; }
 		}
 
-		return standJumpData;
+		return jumpData;
 	}
 
 	public string GetAnimParam() {
@@ -100,8 +117,8 @@ public class PlayerJump : MonoBehaviour {
 
 #if UNITY_EDITOR
 	void OnDrawGizmos() {
-		if (body == null) {
-			body = GetComponent<Rigidbody>();
+		if (body == null || groundCheck == null || mover == null) {
+			return;
 		}
 
 		bool show123 = Input.GetKey(";");
@@ -124,35 +141,38 @@ public class PlayerJump : MonoBehaviour {
 		List<Vector3> maxJump = null;
 
 		// Context Jump
-		if (Input.GetKey("j")) {
+		if (contextJumpShowing) {
 			showArc = true;
 			data = pickJump();
-			moveSpeed = mover.ActiveMoveData.MaxSpeed * direction;
+			moveSpeed = body.velocity.x;//mover.ActiveMoveData.MaxSpeed * direction;
 			if (data == standJumpData) {
 				Gizmos.color = standColor;
-				moveSpeed = 0f;
+				//moveSpeed = 0f;
 			}
-			if (data == runJumpData) { Gizmos.color = runColor; }
-			if (data == sprintJumpData) { Gizmos.color = sprintColor; }
-			if (data == brakeJumpData) { Gizmos.color = brakeColor; }
+			else if (data == runJumpData) { Gizmos.color = runColor; }
+			else if (data == sprintJumpData) { Gizmos.color = sprintColor; }
+			else if (data == brakeJumpData) {
+				Gizmos.color = brakeColor;
+				//moveSpeed = body.velocity.x;
+			}
 
 		}
 		// Running Jump
-		else if (Input.GetKey("k")) {
+		else if (runJumpShowing) {
 			showArc = true;
 			data = runJumpData;
 			moveSpeed = mover.runData.MaxSpeed * direction;
 			Gizmos.color = runColor;
 		}
 		// Sprinting Jump
-		else if (Input.GetKey("l")) {
+		else if (sprintJumpShowing) {
 			showArc = true;
 			data = sprintJumpData;
 			moveSpeed = mover.sprintData.MaxSpeed * direction;
 			Gizmos.color = sprintColor;
 		}
 		// Braking Jump
-		else if (Input.GetKey("h")) {
+		else if (brakeJumpShowing) {
 			showArc = true;
 			data = brakeJumpData;
 			moveSpeed = body.velocity.x;
@@ -161,7 +181,10 @@ public class PlayerJump : MonoBehaviour {
 
 		if (showArc) {
 			minJump = sampleJumpArc(data, resolution, moveSpeed, false, show1, show2, show3);
-			maxJump = sampleJumpArc(data, resolution, moveSpeed, true, show1, show2, show3);
+
+			if (groundCheck.OnGround || jumping) {
+				maxJump = sampleJumpArc(data, resolution, moveSpeed, true, show1, show2, show3);
+			}
 		}
 
 		if (minJump != null) {
@@ -181,19 +204,38 @@ public class PlayerJump : MonoBehaviour {
 		}
 	}
 
+	void toggleJumpsShowing(bool showContext, bool showRun, bool showSprint, bool showBrake) {
+		contextJumpShowing = showContext;
+		runJumpShowing = showRun;
+		sprintJumpShowing = showSprint;
+		brakeJumpShowing = showBrake;
+	}
+
 	List<Vector3> sampleJumpArc(JumpData data, int resolution, float moveSpeed, bool fullHold, bool show1, bool show2, bool show3)
 	{
 		var points = new List<Vector3>();
 		if (resolution > 0) {
 			var height = 0f;
 			var jumpDone = false;
-			if (data.maxJumpDuration >= 0.001f) {
+			if (data != null && data.maxJumpDuration >= 0.001f) {
 				if (show1) {
 					var timeStep = data.maxJumpDuration / resolution;
-					for (int i = 0; i < resolution; i++) {
-						var sampleTime = timeStep * i;
-						(height, jumpDone) = data.GetHeight(sampleTime, fullHold ? data.maxJumpDuration : 0);
-						points.Add(transform.position + new Vector3(moveSpeed * sampleTime, height, 0));
+					var startStep = 0;
+
+					if (!groundCheck.OnGround) {
+						if (jumping) {
+							startStep = (int)(resolution * Mathf.Clamp01((Time.time - jumpStartTime) / data.maxJumpDuration));
+						} else {
+							startStep = resolution;
+						}
+					}
+
+					(var baselineHeight, var baselineJumpDone) = data.GetHeight(timeStep * startStep, fullHold ? data.maxJumpDuration : jumpHoldDuration);
+
+					for (int i = startStep; i <= resolution; i++) {
+						(height, jumpDone) = data.GetHeight(timeStep * i, fullHold ? data.maxJumpDuration : jumpHoldDuration);
+						height -= baselineHeight;
+						points.Add(transform.position + new Vector3(moveSpeed * (timeStep * (i - startStep)), height, 0));
 					}
 
 					addGravityToArc(points, timeStep, moveSpeed);
@@ -214,7 +256,7 @@ public class PlayerJump : MonoBehaviour {
 		var x = points[points.Count - 1].x;
 		var height = points[points.Count - 1].y;
 		var minHeight = height - 100;
-		var fallVel = 0f;
+		var fallVel = Mathf.Min(body.velocity.y, 0);
 		var arcDone = false;
 
 		while (!arcDone) {

@@ -48,7 +48,7 @@ public class PlayerMove : MonoBehaviour {
 		if (tryMove) {
 			if (moveData == brakeData) {
 				velX = moveData.ApplyDampening(velX);
-				transform.right = Vector3.right * (velX < 0 ? -1 : 1);
+				transform.right = Vector3.right * (groundCheck.OnGround ? (velX < 0 ? -1 : 1) : direction);
 			} else if (moveData == airData) {
 				velX = Mathf.Max(curSpeed, moveData.GetSpeed(moveDuration)) * direction;
 				transform.right = Vector3.right * direction;

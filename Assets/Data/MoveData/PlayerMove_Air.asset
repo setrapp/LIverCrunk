@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24c1c99132466413f9f2b7a80804603d, type: 3}
   m_Name: PlayerMove_Air
   m_EditorClassIdentifier: 
-  minSpeed: 1
+  minSpeed: 3
   maxSpeed: 5
   accelerationTime: 0.25
   dampening: 0.75

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: PlayerMove_Air
   m_EditorClassIdentifier: 
   minSpeed: 3
-  maxSpeed: 5
+  maxSpeed: 12
   accelerationTime: 0.25
   dampening: 10

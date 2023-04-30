@@ -17,6 +17,7 @@ public class PlayerJump : MonoBehaviour {
 	private float timeTryingJump = 0;
 	private JumpData jumpData = null;
 	public JumpData ActiveJumpData => jumpData;
+	public float fallTerminalVelocity = 100;
 
 	public float preJumpAllowanceTime = 0.1f;
 	public JumpData standJumpData = null;
@@ -90,6 +91,13 @@ public class PlayerJump : MonoBehaviour {
 		}
 
 		body.useGravity = !groundCheck.OnGround && !jumping && !feed.IsFeeding;
+
+		if (body.velocity.y * -1 > Mathf.Abs(fallTerminalVelocity)) {
+			body.velocity = new Vector3(body.velocity.x, Mathf.Abs(fallTerminalVelocity) * -1, 0);
+		}
+
+		// TODO remove
+		//body.velocity = fallTerminalVelocity;
 	}
 
 	JumpData pickJump() {

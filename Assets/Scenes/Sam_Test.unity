@@ -8129,7 +8129,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1327971982
 Transform:
   m_ObjectHideFlags: 0
@@ -12110,6 +12110,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LiverSource
       objectReference: {fileID: 0}
+    - target: {fileID: 539735954943561691, guid: 04465f77c8a8c64438228d227e5dc9d0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2873061992083906136, guid: 04465f77c8a8c64438228d227e5dc9d0, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -12682,7 +12686,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6616641022733581420, guid: 0ae43dd598b5b4fe7af3b45df304ecd9, type: 3}
       propertyPath: contextJumpShowing
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6616641022733581420, guid: 0ae43dd598b5b4fe7af3b45df304ecd9, type: 3}
+      propertyPath: fallTerminalVelocity
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 8158446846250512527, guid: 0ae43dd598b5b4fe7af3b45df304ecd9, type: 3}
       propertyPath: m_RootOrder
@@ -12690,11 +12698,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8158446846250512527, guid: 0ae43dd598b5b4fe7af3b45df304ecd9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 19.973848
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 8158446846250512527, guid: 0ae43dd598b5b4fe7af3b45df304ecd9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.1
+      value: 11.8
       objectReference: {fileID: 0}
     - target: {fileID: 8158446846250512527, guid: 0ae43dd598b5b4fe7af3b45df304ecd9, type: 3}
       propertyPath: m_LocalPosition.z

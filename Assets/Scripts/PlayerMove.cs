@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody), typeof(GroundCheck), typeof(PlayerFeed))]
+[RequireComponent(typeof(Rigidbody), typeof(GroundCheck))]
 public class PlayerMove : MonoBehaviour {
 	private Rigidbody body = null;
 	private GroundCheck groundCheck = null;
@@ -17,6 +17,8 @@ public class PlayerMove : MonoBehaviour {
 
 	private float moveStartTime = 0;
 	private bool collidingInAir = false;
+
+	[HideInInspector] public bool sprintDisabled = false;
 	
 	void Start() {
 		body = GetComponent<Rigidbody>();
@@ -33,13 +35,17 @@ public class PlayerMove : MonoBehaviour {
 		var curSpeed = Mathf.Abs(velX);
 		var minBrakeSpeed = groundCheck.OnGround ? runData.MaxSpeed : airData.MaxSpeed;
 		bool facingWrongDirection = (velX > minBrakeSpeed && horizontal < 0) || (velX < -minBrakeSpeed && horizontal > 0);
+		var sprintAxis = Input.GetAxis("Sprint");
+		if (sprintDisabled) {
+			sprintAxis = 0;
+		}
 
 		moveData = runData;
 		if (facingWrongDirection) {
 			moveData = brakeData;
 		} else if (!groundCheck.OnGround) {
 			moveData = airData;
-		} else if ((Input.GetAxis("Sprint") >= 0.001f && Mathf.Abs(horizontal) > 0.001f) || curSpeed > runData.MaxSpeed) {
+		} else if ((sprintAxis >= 0.001f && Mathf.Abs(horizontal) > 0.001f) || curSpeed > runData.MaxSpeed) {
 			moveData = sprintData;
 		}
 		
@@ -57,7 +63,7 @@ public class PlayerMove : MonoBehaviour {
 				velX = Mathf.Max(curSpeed, moveData.GetSpeed(moveDuration)) * direction;
 				transform.right = Vector3.right * direction;
 			} else if (moveData == sprintData) {
-				if (Input.GetAxis("Sprint") < 0.001) {
+				if (sprintAxis < 0.001) {
 					velX = moveData.ApplyDampening(velX);
 				} else {
 					velX = moveData.GetSpeed(moveDuration) * direction;
@@ -94,7 +100,7 @@ public class PlayerMove : MonoBehaviour {
 
 		velocity.x = velX;
 
-		if (!collidingInAir && !feed.IsFeeding) {
+		if (!body.isKinematic && !collidingInAir && (feed == null || !feed.IsFeeding)) {
 			body.velocity = velocity;
 		}
 
@@ -121,9 +127,9 @@ public class PlayerMove : MonoBehaviour {
 
 	void OnCollisionStay(Collision collision) {
 		var contact = collision.GetContact(0);
-		if (Mathf.Abs(contact.normal.x) > Mathf.Abs(contact.normal.y)) {
-			Debug.Log("Wall");
-			if (groundCheck.OnGround && Vector3.Dot(contact.normal, transform.right) < 0) {
+		if (Mathf.Abs(contact.normal.x) > Mathf.Abs(contact.normal.y) && Vector3.Dot(contact.normal, transform.right) < 0) {
+			//Debug.Log("Wall");
+			if (groundCheck.OnGround) {
 				//collidingInAir = true;
 			} else {
 				// If we're colliding with something in the air, we should not be able alter our trajectory until we're free (or likely we get away from a wall).

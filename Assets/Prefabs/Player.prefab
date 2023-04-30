@@ -46,7 +46,7 @@ Transform:
   - {fileID: 7192666924668556056}
   - {fileID: 6345380291813462489}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8982161335863561837
 MonoBehaviour:
@@ -60,7 +60,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d211fe7179cd447afb05e649f452f92a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  globals: {fileID: 11400000, guid: ba48ddd22327f41fca7319feb97856cc, type: 2}
+  globalsPrefab: {fileID: 1444756796298104427, guid: 4009ba9cbec6448c99f86663447becab, type: 3}
   maxHealthSeconds: 10
   maxLivers: 1
   EatenLivers: []
@@ -124,6 +124,7 @@ MonoBehaviour:
   sprintData: {fileID: 11400000, guid: 4a375eb17cf3348d7a223540ba4fc288, type: 2}
   brakeData: {fileID: 11400000, guid: 9a4a42bf324084eccb7fc8a1c31cc818, type: 2}
   airData: {fileID: 11400000, guid: 912b52d9dffa146a8a3067dda4e52c1f, type: 2}
+  sprintDisabled: 0
 --- !u!114 &6616641022733581420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,6 +137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53a0daf5a46a24272ba15ae43f15f5dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jumpDisabled: 0
   fallTerminalVelocity: 50
   preJumpAllowanceTime: 0.25
   standJumpData: {fileID: 11400000, guid: d789969eb9ef74a3cbe15b58d6833c16, type: 2}

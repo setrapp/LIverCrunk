@@ -40,6 +40,7 @@ SpriteAtlas:
     - e37cdba05f2f6af409713a9a206729d3: 21300000
     - 310a4a3403fba8f409b432f116b3f9da: 21300000
     - fd3ab1f50c0feee44862bc72df45b369: 21300000
+    - 4cef735797c46c64e93a4b6b71c78d84: 21300000
     - 5046a80c434628f459b3f880d8c5e4bb: 21300000
     - 932c2c8c7e3fa2747b491e6e2277e8ae: 21300000
     - d45ac69c320995042843fb1a4ef595c0: 21300000
@@ -49,6 +50,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: e37cdba05f2f6af409713a9a206729d3, type: 3}
   - {fileID: 21300000, guid: 310a4a3403fba8f409b432f116b3f9da, type: 3}
   - {fileID: 21300000, guid: fd3ab1f50c0feee44862bc72df45b369, type: 3}
+  - {fileID: 21300000, guid: 4cef735797c46c64e93a4b6b71c78d84, type: 3}
   - {fileID: 21300000, guid: 5046a80c434628f459b3f880d8c5e4bb, type: 3}
   - {fileID: 21300000, guid: 932c2c8c7e3fa2747b491e6e2277e8ae, type: 3}
   - {fileID: 21300000, guid: d45ac69c320995042843fb1a4ef595c0, type: 3}
@@ -57,6 +59,7 @@ SpriteAtlas:
   - Tiles_City_1
   - Tiles_City_1x3
   - Tiles_City_3x1
+  - Tiles_Sewer_1x1
   - TileSheet
   - Tile_1
   - Tiles_Sewer_3x3

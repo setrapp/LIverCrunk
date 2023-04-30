@@ -40,17 +40,20 @@ SpriteAtlas:
     - 086c028311bb15c4d84a7138b4dc8b05: 21300000
     - 16d662b3719cafd4ba074700cc97bfd4: 21300000
     - 72908b848b34cc447ba9f7adab29809c: 21300000
+    - 9e50127796ab36f4d90928dd95880f25: 21300000
     - cebe0de8781efc64fbddc9e5441337ed: 21300000
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
   - {fileID: 21300000, guid: 086c028311bb15c4d84a7138b4dc8b05, type: 3}
   - {fileID: 21300000, guid: 16d662b3719cafd4ba074700cc97bfd4, type: 3}
   - {fileID: 21300000, guid: 72908b848b34cc447ba9f7adab29809c, type: 3}
+  - {fileID: 21300000, guid: 9e50127796ab36f4d90928dd95880f25, type: 3}
   - {fileID: 21300000, guid: cebe0de8781efc64fbddc9e5441337ed, type: 3}
   m_PackedSpriteNamesToIndex:
   - YieldSign
   - CautionCone
   - Tire
+  - Pipe
   - CautionCone 1
   m_RenderDataMap: {}
   m_Tag: Props

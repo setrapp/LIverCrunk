@@ -15,4 +15,4 @@ MonoBehaviour:
   minSpeed: 3
   maxSpeed: 5
   accelerationTime: 0.25
-  dampening: 0.75
+  dampening: 10

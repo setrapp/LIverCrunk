@@ -13,7 +13,15 @@ public class GroundCheck : MonoBehaviour {
 	private bool backGrounded = false;
 	private bool frontGrounded = false;
 
-	public bool OnGround => midGrounded || backGrounded || frontGrounded;
+	public bool OnGround {
+		get {
+#if UNITY_EDITOR
+			if (!Application.isPlaying) { return true; }
+#endif
+			return midGrounded || backGrounded || frontGrounded;
+		}
+	}
+
 
 	void FixedUpdate() {
 		midRay.origin = transform.position;

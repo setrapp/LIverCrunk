@@ -20,4 +20,12 @@ public class Player : MonoBehaviour {
 		}
 #endif
 	}
+
+#if UNITY_EDITOR
+	void OnDrawGizmos() {
+		if (!Application.isPlaying && GlobalData.Instance != globals) {
+			globals.Init();
+		}
+	}
+#endif
 }

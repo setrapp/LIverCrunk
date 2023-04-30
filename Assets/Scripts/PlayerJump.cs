@@ -24,10 +24,10 @@ public class PlayerJump : MonoBehaviour {
 	public JumpData sprintJumpData = null;
 	public JumpData brakeJumpData = null;
 
-	private bool contextJumpShowing = true;
-	private bool runJumpShowing = false;
-	private bool sprintJumpShowing = false;
-	private bool brakeJumpShowing = false;
+	public bool contextJumpShowing = true;
+	public bool runJumpShowing = false;
+	public bool sprintJumpShowing = false;
+	public bool brakeJumpShowing = false;
 
 	void Start() {
 		body = GetComponent<Rigidbody>();
@@ -93,6 +93,10 @@ public class PlayerJump : MonoBehaviour {
 	}
 
 	JumpData pickJump() {
+#if UNITY_EDITOR
+		if (!Application.isPlaying) { return standJumpData; }
+#endif
+
 		if (groundCheck.OnGround) {
 			if (mover.ActiveMoveData == mover.runData) {
 				if (Mathf.Abs(body.velocity.x) > 0.001f) { return runJumpData; }
@@ -123,9 +127,9 @@ public class PlayerJump : MonoBehaviour {
 
 #if UNITY_EDITOR
 	void OnDrawGizmos() {
-		if (body == null || groundCheck == null || mover == null) {
-			return;
-		}
+		if (body == null) { body = GetComponent<Rigidbody>(); }
+		if (groundCheck == null) { groundCheck = GetComponent<GroundCheck>(); }
+		if (mover == null) { mover = GetComponent<PlayerMove>(); }
 
 		bool show123 = Input.GetKey(";");
 		bool show3 = !show123 && Input.GetKey(".");

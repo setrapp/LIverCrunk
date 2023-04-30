@@ -12,5 +12,5 @@ public class LiverData : ScriptableObject {
 	}
 
 	public Quality quality = Quality.Healthy;
-	public float maxHealth = 100;
+	public float maxHealthSeconds = 30;
 }

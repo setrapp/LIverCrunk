@@ -38,6 +38,7 @@ public class PlayerFeed : MonoBehaviour {
 	{
 		feeding = true;
 		body.isKinematic = true;
+		player.IgnoreDamage(true);
 		StartCoroutine(feed(harvest));
 	}
 

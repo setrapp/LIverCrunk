@@ -1,0 +1,81 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: UI
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 91b78ccd6a6148b49a7a16441784487b, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+    packedSpriteRenderDataKeys:
+    - 8a900370a99ad194cad076cb0a4a07ba: 21300000
+    - 3e3320f23441b0a4a9f471d0c27a6acd: 21300000
+    - b804449366574ae4bb0e960bb235e158: 21300000
+    - 9c10210949da29540b09b074e52c2086: 21300000
+    - ba5d16bb4e06c204f9e296c1a16172d4: 21300000
+    - bef89a7e7063125488be17433791faab: 21300000
+    - e7ce36ee99512c446beee1797390d1e0: 21300000
+    - 19e0e23f501da294ea1dc94cdf04cb26: 21300000
+    - 6b8b183f4f9132546a9ec5f1cee4a8fe: 1787778225
+    - 6b8b183f4f9132546a9ec5f1cee4a8fe: 1501058372
+    - 6b8b183f4f9132546a9ec5f1cee4a8fe: -1651322220
+    - 6b8b183f4f9132546a9ec5f1cee4a8fe: -1864827706
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 8a900370a99ad194cad076cb0a4a07ba, type: 3}
+  - {fileID: 21300000, guid: 3e3320f23441b0a4a9f471d0c27a6acd, type: 3}
+  - {fileID: 21300000, guid: b804449366574ae4bb0e960bb235e158, type: 3}
+  - {fileID: 21300000, guid: 9c10210949da29540b09b074e52c2086, type: 3}
+  - {fileID: 21300000, guid: ba5d16bb4e06c204f9e296c1a16172d4, type: 3}
+  - {fileID: 21300000, guid: bef89a7e7063125488be17433791faab, type: 3}
+  - {fileID: 21300000, guid: e7ce36ee99512c446beee1797390d1e0, type: 3}
+  - {fileID: 21300000, guid: 19e0e23f501da294ea1dc94cdf04cb26, type: 3}
+  - {fileID: 1787778225, guid: 6b8b183f4f9132546a9ec5f1cee4a8fe, type: 3}
+  - {fileID: 1501058372, guid: 6b8b183f4f9132546a9ec5f1cee4a8fe, type: 3}
+  - {fileID: -1651322220, guid: 6b8b183f4f9132546a9ec5f1cee4a8fe, type: 3}
+  - {fileID: -1864827706, guid: 6b8b183f4f9132546a9ec5f1cee4a8fe, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - ui_HealthBar_LiverILarge
+  - ui_HealthBar_LiverFrame_Glow
+  - ui_TextBox
+  - ui_HealthBar_LiverIcon
+  - ui_HealthBar_LiverFrame
+  - FeedCrunkLogo
+  - ui_HealthBar_MainFrame
+  - ui_HealthBar_Fill
+  - ui_HealthBar_CapFX_3
+  - ui_HealthBar_CapFX_2
+  - ui_HealthBar_CapFX_1
+  - ui_HealthBar_CapFX_0
+  m_RenderDataMap: {}
+  m_Tag: UI
+  m_IsVariant: 0

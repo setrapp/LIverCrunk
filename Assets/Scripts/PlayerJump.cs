@@ -35,6 +35,10 @@ public class PlayerJump : MonoBehaviour {
 		groundCheck = GetComponent<GroundCheck>();
 		mover = GetComponent<PlayerMove>();
 		feed = GetComponent<PlayerFeed>();
+
+#if UNITY_EDITOR
+		toggleJumpsShowing(true, false, false, false);
+#endif
 	}
 
 	void FixedUpdate() {
@@ -130,7 +134,10 @@ public class PlayerJump : MonoBehaviour {
 	}
 
 	void OnCollisionEnter(Collision collision) {
-		EndJump();
+		var contact = collision.GetContact(0);
+		if (Mathf.Abs(contact.normal.y) > Mathf.Abs(contact.normal.x)) {
+			EndJump();
+		}
 	}
 
 #if UNITY_EDITOR

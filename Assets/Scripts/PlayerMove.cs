@@ -120,10 +120,15 @@ public class PlayerMove : MonoBehaviour {
 	}*/
 
 	void OnCollisionStay(Collision collision) {
-		// If we're colliding with something in the air, we should not be able alter our trajectory until we're free (or likely we get away from a wall).
-		if (!groundCheck.OnGround) {
-			collidingInAir = true;
+		var contact = collision.GetContact(0);
+		if (Mathf.Abs(contact.normal.x) > Mathf.Abs(contact.normal.y)) {
+			Debug.Log("Wall");
+			if (groundCheck.OnGround && Vector3.Dot(contact.normal, transform.right) < 0) {
+				//collidingInAir = true;
+			} else {
+				// If we're colliding with something in the air, we should not be able alter our trajectory until we're free (or likely we get away from a wall).
+				collidingInAir = true;
+			}
 		}
 	}
-
 }

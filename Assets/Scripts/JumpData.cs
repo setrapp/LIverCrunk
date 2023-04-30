@@ -8,7 +8,6 @@ public class JumpData : ScriptableObject {
 	public float minHeight = 5f;
 	public float maxHeight = 15f;
 	public float maxJumpDuration = 1f;
-	public float maxHoldDuration = 0.5f;
 
 	public (float, bool) GetHeight(float jumpDuration, float holdDuration) {
 		var lastKeyframe = GetLastKeyframe();
@@ -20,8 +19,8 @@ public class JumpData : ScriptableObject {
 		}
 
 		var holdPortion = 1f;
-		if (maxHoldDuration > 0) {
-			holdPortion = holdDuration / maxHoldDuration;
+		if (maxJumpDuration > 0) {
+			holdPortion = holdDuration / maxJumpDuration;
 		}
 
 		var jumpPortion = 1f;

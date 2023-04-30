@@ -30,5 +30,4 @@ MonoBehaviour:
     m_RotationOrder: 4
   minHeight: 10
   maxHeight: 20
-  maxJumpDuration: 0.5
-  maxHoldDuration: 0.5
+  maxJumpDuration: 0.65

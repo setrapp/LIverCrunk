@@ -104,7 +104,7 @@ public class PlayerJump : MonoBehaviour {
 		return "Jump";//"Idle";
 	}
 
-	void EndJump() {
+	public void EndJump() {
 		jumping = false;
 		jumpStartTime = 0;
 		jumpHolding = false;

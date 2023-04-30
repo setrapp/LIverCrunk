@@ -4,6 +4,7 @@ public class PlayerAnim : MonoBehaviour {
 	public Animator anim;
 	public PlayerMove playerMove;
 	public PlayerJump playerJump;
+	public PlayerFeed playerFeed;
 	public GroundCheck groundCheck;
 
 	private string currentPose = "Idle";
@@ -14,7 +15,11 @@ public class PlayerAnim : MonoBehaviour {
 		if (groundCheck.OnGround) {
 			nextPose = playerMove.GetAnimParam();
 		} else {
-			nextPose = playerJump.GetAnimParam();
+			if (playerFeed.IsFeeding) {
+				nextPose = playerFeed.GetAnimParam();
+			} else {
+				nextPose = playerJump.GetAnimParam();
+			}
 		}
 
 		if (nextPose != currentPose) {

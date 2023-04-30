@@ -6,6 +6,7 @@ public class PlayerJump : MonoBehaviour {
 	private Rigidbody body = null;
 	private GroundCheck groundCheck = null;
 	private PlayerMove mover = null;
+	private PlayerFeed feed = null;
 
 	private bool jumping = false;
 	private float jumpStartTime = 0;
@@ -32,6 +33,7 @@ public class PlayerJump : MonoBehaviour {
 		body = GetComponent<Rigidbody>();
 		groundCheck = GetComponent<GroundCheck>();
 		mover = GetComponent<PlayerMove>();
+		feed = GetComponent<PlayerFeed>();
 	}
 
 	void FixedUpdate() {
@@ -42,48 +44,52 @@ public class PlayerJump : MonoBehaviour {
 		if (Input.GetKeyDown("h")) { toggleJumpsShowing(false, false, false, !brakeJumpShowing); }
 #endif
 
-		bool tryJump = Input.GetAxis("Jump") > 0;
-		if (tryJump) {
-			timeTryingJump += Time.deltaTime;
+		if (feed.IsFeeding) {
+			EndJump();
 		} else {
-			timeTryingJump = 0;
-		}
+			bool tryJump = Input.GetAxis("Jump") > 0;
+			if (tryJump) {
+				timeTryingJump += Time.deltaTime;
+			} else {
+				timeTryingJump = 0;
+			}
 
-		jumpReady |= groundCheck.OnGround && timeTryingJump <= preJumpAllowanceTime;
+			jumpReady |= groundCheck.OnGround && timeTryingJump <= preJumpAllowanceTime;
 
-		if (tryJump) {
-			if (!jumping && jumpReady && groundCheck.OnGround) {
-				jumping = true;
-				jumpStartTime = Time.time;
-				jumpStartY = body.position.y;
-				jumpHolding = true;
-				jumpHoldDuration = 0;
+			if (tryJump) {
+				if (!jumping && jumpReady && groundCheck.OnGround) {
+					jumping = true;
+					jumpStartTime = Time.time;
+					jumpStartY = body.position.y;
+					jumpHolding = true;
+					jumpHoldDuration = 0;
+					jumpReady = false;
+				} else if (jumpHolding) {
+					jumping = true;
+					jumpHoldDuration += Time.deltaTime;
+				}
+			}
+
+			bool jumpDone = true;
+			if (jumping) {
 				jumpReady = false;
-			} else if (jumpHolding) {
-				jumping = true;
-				jumpHoldDuration += Time.deltaTime;
+
+				jumpData = pickJump();
+
+				var pos = body.position;
+				var jumpHeight = 0f;
+				(jumpHeight, jumpDone) = jumpData.GetHeight(Time.time - jumpStartTime, jumpHoldDuration);
+				pos.y = jumpStartY + jumpHeight;
+
+				body.position = pos;
+
+				if (jumpDone) {
+					EndJump();
+				}
 			}
 		}
 
-		bool jumpDone = true;
-		if (jumping) {
-			jumpReady = false;
-
-			jumpData = pickJump();
-
-			var pos = body.position;
-			var jumpHeight = 0f;
-			(jumpHeight, jumpDone) = jumpData.GetHeight(Time.time - jumpStartTime, jumpHoldDuration);
-			pos.y = jumpStartY + jumpHeight;
-
-			body.position = pos;
-
-			if (jumpDone) {
-				EndJump();
-			}
-		}
-
-		body.useGravity = !groundCheck.OnGround && !jumping;
+		body.useGravity = !groundCheck.OnGround && !jumping && !feed.IsFeeding;
 	}
 
 	JumpData pickJump() {

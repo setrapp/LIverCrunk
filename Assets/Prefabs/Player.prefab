@@ -101,12 +101,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53a0daf5a46a24272ba15ae43f15f5dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  preJumpAllowanceTime: 0.1
+  fallTerminalVelocity: 50
+  preJumpAllowanceTime: 0.25
   standJumpData: {fileID: 11400000, guid: d789969eb9ef74a3cbe15b58d6833c16, type: 2}
   runJumpData: {fileID: 11400000, guid: 2fcb36d1793b144a989175198b1d9d9a, type: 2}
   sprintJumpData: {fileID: 11400000, guid: 2b81644b1369342a3970114707413258, type: 2}
   brakeJumpData: {fileID: 11400000, guid: dbace9349496642f1b2d687e5a7b4140, type: 2}
-  contextJumpShowing: 1
+  contextJumpShowing: 0
   runJumpShowing: 0
   sprintJumpShowing: 0
   brakeJumpShowing: 0
@@ -598,10 +599,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1
+  m_Radius: 1.35
   m_Height: 4.25
   m_Direction: 1
-  m_Center: {x: 0, y: 1.9, z: 0}
+  m_Center: {x: 0.69, y: 1.9, z: 0}
 --- !u!1001 &7577022260943419835
 PrefabInstance:
   m_ObjectHideFlags: 0

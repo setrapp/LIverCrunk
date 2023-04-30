@@ -14,6 +14,7 @@ public class PlayerMove : MonoBehaviour {
 	public MoveData ActiveMoveData => moveData;
 
 	private float moveStartTime = 0;
+	private bool collidingInAir = false;
 	
 	void Start() {
 		body = GetComponent<Rigidbody>();
@@ -89,7 +90,12 @@ public class PlayerMove : MonoBehaviour {
 		render.transform.rotation = rotation;
 
 		velocity.x = velX;
-		body.velocity = velocity;
+
+		if (!collidingInAir) {
+			body.velocity = velocity;
+		}
+
+		collidingInAir = false;
 	}
 
 	public string GetAnimParam() {
@@ -100,6 +106,21 @@ public class PlayerMove : MonoBehaviour {
 		}
 
 		return "Idle";
+	}
+
+	/*void OnCollisionEnter(Collision collision) {
+		activeCollisions.Add(collision);
+	}
+
+	void OnCollisionExit(Collision collision) {
+		activeCollisions.Add(collision);
+	}*/
+
+	void OnCollisionStay(Collision collision) {
+		// If we're colliding with something in the air, we should not be able alter our trajectory until we're free (or likely we get away from a wall).
+		if (!groundCheck.OnGround) {
+			collidingInAir = true;
+		}
 	}
 
 }

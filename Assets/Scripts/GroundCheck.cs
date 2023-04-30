@@ -9,11 +9,11 @@ public class GroundCheck : MonoBehaviour {
 	private Ray backRay = new Ray(Vector3.zero, Vector3.down);
 	private Ray frontRay = new Ray(Vector3.zero, Vector3.down);
 
-	private bool midHit = false;
-	private bool backHit = false;
-	private bool frontHit = false;
+	private bool midGrounded = false;
+	private bool backGrounded = false;
+	private bool frontGrounded = false;
 
-	public bool OnGround => midHit || backHit || frontHit;
+	public bool OnGround => midGrounded || backGrounded || frontGrounded;
 
 	void FixedUpdate() {
 		midRay.origin = transform.position;
@@ -22,20 +22,29 @@ public class GroundCheck : MonoBehaviour {
 
 		var req_layer = LayerMask.GetMask("Platform");
 
-		midHit = Physics.Raycast(midRay.origin, midRay.direction, midRayLength, req_layer);
-		backHit = Physics.Raycast(backRay.origin, backRay.direction, sideRayLength, req_layer);
-		frontHit = Physics.Raycast(frontRay.origin, frontRay.direction, sideRayLength, req_layer);
+		midGrounded = backGrounded = frontGrounded = false;
+		RaycastHit midHit, backHit, frontHit;
+
+		if (Physics.Raycast(midRay, out midHit, midRayLength, req_layer) && (midHit.point - midRay.origin).sqrMagnitude > midRayLength / 2) {
+			midGrounded = true;
+		}
+		if (Physics.Raycast(backRay, out backHit, sideRayLength, req_layer) && (backHit.point - backRay.origin).sqrMagnitude > sideRayLength / 2) {
+			backGrounded = true;
+		}
+		if (Physics.Raycast(frontRay, out frontHit, sideRayLength, req_layer) && (frontHit.point - frontRay.origin).sqrMagnitude > sideRayLength / 2) {
+			frontGrounded = true;
+		}
 	}
 
 #if UNITY_EDITOR
 	void OnDrawGizmos() {
-		Gizmos.color = midHit ? Color.blue : Color.red;
+		Gizmos.color = midGrounded ? Color.blue : Color.red;
 		Gizmos.DrawLine(midRay.origin, midRay.origin + (midRay.direction * midRayLength));
 
-		Gizmos.color = backHit ? Color.blue : Color.red;
+		Gizmos.color = backGrounded ? Color.blue : Color.red;
 		Gizmos.DrawLine(backRay.origin, backRay.origin + (backRay.direction * sideRayLength));
 
-		Gizmos.color = frontHit ? Color.blue : Color.red;
+		Gizmos.color = frontGrounded ? Color.blue : Color.red;
 		Gizmos.DrawLine(frontRay.origin, frontRay.origin + (frontRay.direction * sideRayLength));
 	}
 #endif

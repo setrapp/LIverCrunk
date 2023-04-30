@@ -326,7 +326,7 @@ GameObject:
   m_Component:
   - component: {fileID: 480364454}
   - component: {fileID: 480364453}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Collider (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1180,9 +1180,33 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -5020221154616691985, guid: 8fb61a39e5062da40b8f9cf945f587d5, type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -5020221154616691985, guid: 8fb61a39e5062da40b8f9cf945f587d5, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1092106501
+      objectReference: {fileID: 0}
+    - target: {fileID: -888895554088733871, guid: 8fb61a39e5062da40b8f9cf945f587d5, type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -888895554088733871, guid: 8fb61a39e5062da40b8f9cf945f587d5, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1092106501
+      objectReference: {fileID: 0}
     - target: {fileID: 754057567225202934, guid: 8fb61a39e5062da40b8f9cf945f587d5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 10.95145
+      objectReference: {fileID: 0}
+    - target: {fileID: 2569530268684582009, guid: 8fb61a39e5062da40b8f9cf945f587d5, type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2569530268684582009, guid: 8fb61a39e5062da40b8f9cf945f587d5, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1092106501
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1534,7 +1558,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1137114117}
   - component: {fileID: 1137114116}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Collider (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

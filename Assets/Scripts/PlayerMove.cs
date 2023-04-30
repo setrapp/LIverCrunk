@@ -1,9 +1,11 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody), typeof(GroundCheck))]
+[RequireComponent(typeof(Rigidbody), typeof(GroundCheck), typeof(PlayerFeed))]
 public class PlayerMove : MonoBehaviour {
 	private Rigidbody body = null;
 	private GroundCheck groundCheck = null;
+	private PlayerFeed feed = null;
+
 	public Transform render = null;
 	public MoveData runData = null;
 	public MoveData sprintData = null;
@@ -19,6 +21,7 @@ public class PlayerMove : MonoBehaviour {
 	void Start() {
 		body = GetComponent<Rigidbody>();
 		groundCheck = GetComponent<GroundCheck>();
+		feed = GetComponent<PlayerFeed>();
 	}
 
 	void FixedUpdate() {
@@ -91,7 +94,7 @@ public class PlayerMove : MonoBehaviour {
 
 		velocity.x = velX;
 
-		if (!collidingInAir) {
+		if (!collidingInAir && !feed.IsFeeding) {
 			body.velocity = velocity;
 		}
 

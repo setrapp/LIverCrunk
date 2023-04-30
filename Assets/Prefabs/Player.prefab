@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7369234720251720113}
   - component: {fileID: 7223191459503524183}
   - component: {fileID: 6616641022733581420}
+  - component: {fileID: 5283321259480731862}
   - component: {fileID: 5664516909234364502}
   - component: {fileID: 6097023337319731426}
   - component: {fileID: 7301971699091533239}
@@ -105,6 +106,18 @@ MonoBehaviour:
   runJumpData: {fileID: 11400000, guid: 2fcb36d1793b144a989175198b1d9d9a, type: 2}
   sprintJumpData: {fileID: 11400000, guid: 2b81644b1369342a3970114707413258, type: 2}
   brakeJumpData: {fileID: 11400000, guid: dbace9349496642f1b2d687e5a7b4140, type: 2}
+--- !u!114 &5283321259480731862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1839164058954636815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22673c762d75a4b249ea54c253aa7534, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5664516909234364502
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -120,6 +133,7 @@ MonoBehaviour:
   anim: {fileID: 6097023337319731426}
   playerMove: {fileID: 7223191459503524183}
   playerJump: {fileID: 6616641022733581420}
+  playerFeed: {fileID: 5283321259480731862}
   groundCheck: {fileID: 7369234720251720113}
 --- !u!95 &6097023337319731426
 Animator:

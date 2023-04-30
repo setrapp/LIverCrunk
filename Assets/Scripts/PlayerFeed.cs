@@ -2,13 +2,15 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-[RequireComponent(typeof(GroundCheck), typeof(Rigidbody))]
+[RequireComponent(typeof(GroundCheck), typeof(Rigidbody), typeof(Player))]
 public class PlayerFeed : MonoBehaviour {
 	private static PlayerFeed instance = null;
 	public static PlayerFeed Instance => instance;
 
 	private GroundCheck groundCheck;
 	private Rigidbody body;
+	private Player player;
+	public Player Player => player;
 
 	public float snapTime = 0.25f;
 	public float feedCooldown = 0.5f;
@@ -17,16 +19,14 @@ public class PlayerFeed : MonoBehaviour {
 	private bool feeding = false;
 	public bool IsFeeding => feeding;
 
-	public int maxLivers = 1;
-	public List<Liver> EatenLivers = new List<Liver>();
-
 	private HarvestPoint harvestTarget = null;
 
-	public bool CanFeed => !IsFeeding && !groundCheck.OnGround && EatenLivers.Count < maxLivers && (Time.time - lastFeedTime) > feedCooldown;
+	public bool CanFeed => !IsFeeding && !groundCheck.OnGround && !player.LiverFull && (Time.time - lastFeedTime) > feedCooldown;
 
 	void Start() {
 		groundCheck = GetComponent<GroundCheck>();
 		body = GetComponent<Rigidbody>();
+		player = GetComponent<Player>();
 
 		if (instance != null && instance != this) {
 			Debug.LogError("Multiple PlayerFeed in the scene... There can only be one");
@@ -63,7 +63,6 @@ public class PlayerFeed : MonoBehaviour {
 			var liver = harvestTarget.Harvest();
 			if (liver != null) {
 				liver.AwardPlayer(this);
-				EatenLivers.Add(liver);
 			}
 		}
 	}

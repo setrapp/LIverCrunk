@@ -4,6 +4,7 @@ public class HarvestPoint : MonoBehaviour{
 	public float harvestRadius = 10f;
 	public float minHarvestHeight = 3f;
 	public NpcDie die = null;
+	public Liver liverPrefab = null;
 
 	void Update() {
 		if (PlayerFeed.Instance != null && PlayerFeed.Instance.CanFeed) {
@@ -16,6 +17,7 @@ public class HarvestPoint : MonoBehaviour{
 
 	public bool Harvest() {
 		die.Die();
+		//if (liver != null) {
 		return true;
 	}
 

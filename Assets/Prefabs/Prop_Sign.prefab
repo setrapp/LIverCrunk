@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 850749203553920656}
   m_Layer: 6
-  m_Name: Prop
+  m_Name: Prop_Sign
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -60,7 +60,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6447114169165717454}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.42, y: -0.07, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -136,7 +136,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 3.63, z: 1}
+  m_Size: {x: 2.51, y: 7.09, z: 1}
   m_Center: {x: -0.42, y: -0.01, z: 0}
 --- !u!1 &7698552139015945727
 GameObject:

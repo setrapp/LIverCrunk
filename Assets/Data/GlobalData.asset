@@ -45,3 +45,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  deliveryScene: LiverDeliveryArea
+  victoryScene: 
+  collectionScene: Playmat

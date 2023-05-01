@@ -8,6 +8,7 @@ public class PlayerJump : MonoBehaviour {
 	private PlayerMove mover = null;
 	private PlayerFeed feed = null;
 
+	[HideInInspector] public bool jumpDisabled = false;
 	private bool jumping = false;
 	private float jumpStartTime = 0;
 	private float jumpStartY = 0;
@@ -49,10 +50,10 @@ public class PlayerJump : MonoBehaviour {
 		if (Input.GetKeyDown("h")) { toggleJumpsShowing(false, false, false, !brakeJumpShowing); }
 #endif
 
-		if (feed.IsFeeding) {
+		if (feed != null && feed.IsFeeding) {
 			EndJump();
 		} else {
-			bool tryJump = Input.GetAxis("Jump") > 0;
+			bool tryJump = !jumpDisabled && Input.GetAxis("Jump") > 0;
 			if (tryJump) {
 				timeTryingJump += Time.deltaTime;
 			} else {
@@ -94,9 +95,9 @@ public class PlayerJump : MonoBehaviour {
 			}
 		}
 
-		body.useGravity = !groundCheck.OnGround && !jumping && !feed.IsFeeding;
+		body.useGravity = !groundCheck.OnGround && !jumping && (feed == null || !feed.IsFeeding);
 
-		if (body.velocity.y * -1 > Mathf.Abs(fallTerminalVelocity)) {
+		if (!body.isKinematic && body.velocity.y * -1 > Mathf.Abs(fallTerminalVelocity)) {
 			body.velocity = new Vector3(body.velocity.x, Mathf.Abs(fallTerminalVelocity) * -1, 0);
 		}
 

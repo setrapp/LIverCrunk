@@ -15,7 +15,7 @@ public class PlayerAnim : MonoBehaviour {
 		if (groundCheck.OnGround) {
 			nextPose = playerMove.GetAnimParam();
 		} else {
-			if (playerFeed.IsFeeding) {
+			if (playerFeed != null && playerFeed.IsFeeding) {
 				nextPose = playerFeed.GetAnimParam();
 			} else {
 				nextPose = playerJump.GetAnimParam();

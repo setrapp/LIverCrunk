@@ -4,7 +4,7 @@ using UnityEngine;
 public class JumpData : ScriptableObject {
 	public bool useGlobalJumpArc = false;
 	public AnimationCurve jumpArc = null;
-	public AnimationCurve JumpArc => useGlobalJumpArc && GlobalData.Instance != null ? GlobalData.Instance.defaultJumpArc : jumpArc;
+	public AnimationCurve JumpArc => useGlobalJumpArc && LiveGlobals.Instance?.data != null ? LiveGlobals.Instance.data.defaultJumpArc : jumpArc;
 	public float minHeight = 5f;
 	public float maxHeight = 15f;
 	public float maxJumpDuration = 1f;

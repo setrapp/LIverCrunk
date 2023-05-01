@@ -5,7 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class Player : MonoBehaviour {
-	public GlobalData globals = null;
+	public LiveGlobals globalsPrefab = null;
 	private Vector3 startPos = Vector3.zero;
 
 	private bool godMode = false;
@@ -21,8 +21,8 @@ public class Player : MonoBehaviour {
 	public UnityEvent OnDie = null;
 
 	void Awake() {
-		if (globals != null) {
-			globals.Init();
+		if (globalsPrefab != null) {
+			globalsPrefab.InitIntoScene();
 		}
 
 		health = maxHealthSeconds;
@@ -84,6 +84,8 @@ public class Player : MonoBehaviour {
 	}
 
 	public void Die() {
+		var body = GetComponent<Rigidbody>();
+		if (body != null) { body.isKinematic = true; }
 		OnDie.Invoke();
 	}
 
@@ -113,8 +115,8 @@ public class Player : MonoBehaviour {
 
 #if UNITY_EDITOR
 	void OnDrawGizmos() {
-		if (!Application.isPlaying && GlobalData.Instance != globals) {
-			globals.Init();
+		if (!Application.isPlaying && LiveGlobals.Instance == null) {
+			globalsPrefab.InitWithoutScene();
 		}
 	}
 #endif

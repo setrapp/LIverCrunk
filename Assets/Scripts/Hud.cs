@@ -20,8 +20,9 @@ public class Hud : MonoBehaviour {
 	private float cachedLiverPortion = 1f;
 	private int cachedLiverCount = 0;
 
-	//public List<GameObject> HudLivers = null;
-	public HudLiver hudLiver = null;
+	public List<GameObject> hudLiverFrames = null;
+	public List<HudLiver> hudLivers = null;
+	//public HudLiver hudLivers = null;
 	
 	void Start() {
 		if (instance != null && instance != this) {
@@ -37,6 +38,10 @@ public class Hud : MonoBehaviour {
 	public void UpdateHealth(float healthPortion, List<Liver> livers) {
 		healthPortion = Mathf.Clamp01(healthPortion);
 		healthFill.fillAmount = Mathf.Max(healthPortion, minHealthPortion);
+
+		for (int i = 0; i < hudLiverFrames.Count; i++) {
+			hudLiverFrames[i].SetActive(i < LiveGlobals.Instance.maxHeldLivers);
+		}
 
 		var liverPortion = 0f;
 		if (livers.Count > 0) {
@@ -64,11 +69,13 @@ public class Hud : MonoBehaviour {
 		liverSpillPos.x = computeSpillPos(liverPortion);
 		liverSpillFx.transform.localPosition = liverSpillPos;
 
-		hudLiver.ToggleVisibility(livers.Count > 0);
 
-		//for (int i = 0; i < livers.Count && i < 
-		if (livers.Count > 0 && livers[0] != null) {
-			hudLiver.UpdateHealth(livers[0].HealthPortion);
+		for (int i = 0; i < hudLivers.Count; i++) {
+			var hudLiver = hudLivers[i];
+			if (i < livers.Count) {
+				hudLiver.ToggleVisibility(livers.Count > 0);
+				hudLiver.UpdateHealth(livers[i].HealthPortion);
+			} else { hudLiver.ToggleVisibility(false); }
 		}
 	}
 

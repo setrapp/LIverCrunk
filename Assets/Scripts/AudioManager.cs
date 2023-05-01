@@ -49,14 +49,16 @@ public class AudioManager : MonoBehaviour
 
     void Update()
     {
-        if (Hud.Instance.liverFill.fillAmount > 0.1f)
-        {
-            crackleSource.volume = Mathf.SmoothDamp(crackleSource.volume, Mathf.InverseLerp(0.75f, 0.0f, Hud.Instance.liverFill.fillAmount), ref volVelocity, smoothTime);
+        if (Hud.Instance != null) {
+            if (Hud.Instance.liverFill.fillAmount > 0.1f)
+            {
+                crackleSource.volume = Mathf.SmoothDamp(crackleSource.volume, Mathf.InverseLerp(0.75f, 0.0f, Hud.Instance.liverFill.fillAmount), ref volVelocity, smoothTime);
 
-        }
-        else
-        {
-            crackleSource.volume = Mathf.SmoothDamp(crackleSource.volume, Mathf.InverseLerp(0.75f, 0.0f, Hud.Instance.healthFill.fillAmount), ref volVelocity, smoothTime);
+            }
+            else
+            {
+                crackleSource.volume = Mathf.SmoothDamp(crackleSource.volume, Mathf.InverseLerp(0.75f, 0.0f, Hud.Instance.healthFill.fillAmount), ref volVelocity, smoothTime);
+            }
         }
     }
 

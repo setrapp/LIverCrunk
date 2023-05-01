@@ -31,8 +31,6 @@ public class PlayerJump : MonoBehaviour {
 	public bool sprintJumpShowing = false;
 	public bool brakeJumpShowing = false;
 
-	private bool audioLandingCheck = false;
-
 	void Start() {
 		body = GetComponent<Rigidbody>();
 		groundCheck = GetComponent<GroundCheck>();
@@ -71,7 +69,6 @@ public class PlayerJump : MonoBehaviour {
 					jumpStartY = body.position.y;
 					jumpHolding = true;
 					jumpHoldDuration = 0;
-					AudioManager.Instance.PlayJumpClip();
 					jumpReady = false;
 				} else if (jumpHolding) {
 					jumping = true;
@@ -87,7 +84,7 @@ public class PlayerJump : MonoBehaviour {
 
 				var pos = body.position;
 				var jumpHeight = 0f;
-				(jumpHeight, jumpDone) = jumpData.GetHeight(Time.time - jumpStartTime, jumpHoldDuration);
+				(jumpHeight, jumpDone) = jumpData?.GetHeight(Time.time - jumpStartTime, jumpHoldDuration) ?? (0, true);
 				pos.y = jumpStartY + jumpHeight;
 
 				body.position = pos;
@@ -100,22 +97,9 @@ public class PlayerJump : MonoBehaviour {
 
 		body.useGravity = !groundCheck.OnGround && !jumping && (feed == null || !feed.IsFeeding);
 
-		if (!body.isKinematic && body.velocity.y * -1 > Mathf.Abs(fallTerminalVelocity)) {
-			body.velocity = new Vector3(body.velocity.x, Mathf.Abs(fallTerminalVelocity) * -1, 0);
+		if (!body.isKinematic && body.velocity.y < -Mathf.Abs(fallTerminalVelocity)) {
+			body.velocity = new Vector3(body.velocity.x, -Mathf.Abs(fallTerminalVelocity), 0);
 		}
-
-		if (!groundCheck.OnGround && !audioLandingCheck)
-		{
-			audioLandingCheck = true;
-		}
-		else if (groundCheck.OnGround && audioLandingCheck)
-		{
-			AudioManager.Instance.PlayLandClip();
-			audioLandingCheck = false;
-		}
-
-		// TODO remove
-		//body.velocity = fallTerminalVelocity;
 	}
 
 	JumpData pickJump() {

@@ -47,4 +47,4 @@ MonoBehaviour:
     m_RotationOrder: 4
   deliveryScene: LiverDeliveryArea
   victoryScene: 
-  collectionScene: Playmat
+  collectionScene: ClaysLevel

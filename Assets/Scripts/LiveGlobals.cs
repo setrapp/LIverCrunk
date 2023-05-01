@@ -1,10 +1,17 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 
 public class LiveGlobals : MonoBehaviour {
 	private static LiveGlobals instance = null;
 	public static LiveGlobals Instance => instance;
 	public GlobalData data = null;
+
+	public List<int> harvestedLiverIds = null;
+	public List<Liver> givenLivers = null;
+	public bool respawning = false;
+
+	public Player player = null;
 
 	public static string DeliveryScene => Instance?.data?.deliveryScene;
 	public static string VictoryScene => Instance?.data?.victoryScene;
@@ -43,6 +50,16 @@ public class LiveGlobals : MonoBehaviour {
 	public bool InitWithoutScene() {
 		instance = this;
 		return true;
+	}
+
+	public void HarvestLiver(int id) {
+		harvestedLiverIds.Add(id);
+	}
+
+	public void Respawn() {
+		harvestedLiverIds.Clear();
+		givenLivers.Clear();
+		respawning = true;
 	}
 
 }

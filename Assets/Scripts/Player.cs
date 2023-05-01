@@ -7,14 +7,17 @@ using System.Collections.Generic;
 public class Player : MonoBehaviour {
 	public LiveGlobals globalsPrefab = null;
 	private Vector3 startPos = Vector3.zero;
+	public Rigidbody body;
 
 	private bool godMode = false;
-	private bool ignoreDamage = false;
+	public bool ignoreDamage = false;
 	public float maxHealthSeconds = 100;
 	private float health = 0;
 	public int maxLivers = 1;
 	public List<Liver> EatenLivers = new List<Liver>();
 	public Transform liverSack = null;
+
+	public float sceneChangeY = 100;
 
 	public bool LiverFull => EatenLivers.Count >= maxLivers;
 
@@ -24,6 +27,8 @@ public class Player : MonoBehaviour {
 		if (globalsPrefab != null) {
 			globalsPrefab.InitIntoScene();
 		}
+
+		LiveGlobals.Instance.player = this;
 
 		health = maxHealthSeconds;
 
@@ -41,7 +46,8 @@ public class Player : MonoBehaviour {
 	private IEnumerator reset (bool hard, float delay) {
 		yield return new WaitForSeconds(delay);
 		if (hard) {
-			SceneManager.LoadScene(SceneManager.GetActiveScene().name); // TODO got to boss room
+			LiveGlobals.Instance.Respawn();
+			SceneManager.LoadScene(LiveGlobals.DeliveryScene);
 		}
 		else {
 			SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -95,11 +101,23 @@ public class Player : MonoBehaviour {
 
 	void Update()
 	{
+		if (sceneChangeY <= 0) {
+			if (transform.position.y < sceneChangeY) {
+				SceneManager.LoadScene(LiveGlobals.DeliveryScene);
+			}
+		} else {
+			if (transform.position.y > sceneChangeY) {
+				SceneManager.LoadScene(LiveGlobals.CollectionScene);
+			}
+		}
+
 		//TODO shouldn't all the Fixed updates use fixed delta time
-		SoakDamage(Time.deltaTime);
+		if (!ignoreDamage) {
+			SoakDamage(Time.deltaTime);
 		
-		if (Hud.Instance != null) {
-			Hud.Instance.UpdateHealth(health / maxHealthSeconds, EatenLivers);
+			if (Hud.Instance != null) {
+				Hud.Instance.UpdateHealth(health / maxHealthSeconds, EatenLivers);
+			}
 		}
 
 #if UNITY_EDITOR

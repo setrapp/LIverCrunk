@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 7301971699091533239}
   - component: {fileID: 7651160382939885989}
   - component: {fileID: 5587947058202688754}
+  - component: {fileID: 7367070779450650472}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -47,7 +48,7 @@ Transform:
   - {fileID: 7192666924668556056}
   - {fileID: 6345380291813462489}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8982161335863561837
 MonoBehaviour:
@@ -62,10 +63,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   globalsPrefab: {fileID: 1444756796298104427, guid: 4009ba9cbec6448c99f86663447becab, type: 3}
+  body: {fileID: 0}
+  ignoreDamage: 0
   maxHealthSeconds: 10
   maxLivers: 1
   EatenLivers: []
   liverSack: {fileID: 6773011269841288172}
+  sceneChangeY: -15
   OnDie:
     m_PersistentCalls:
       m_Calls:
@@ -263,6 +267,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a08aca38ccba00419717f765d1528ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7367070779450650472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1839164058954636815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccb1a142628bf4fd0b6bd1af97327b0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpStart: {x: 20, y: 120, z: 0}
 --- !u!1 &1865603976098015557
 GameObject:
   m_ObjectHideFlags: 0

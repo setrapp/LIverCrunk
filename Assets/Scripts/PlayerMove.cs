@@ -19,6 +19,8 @@ public class PlayerMove : MonoBehaviour {
 	private bool collidingInAir = false;
 
 	[HideInInspector] public bool sprintDisabled = false;
+
+	private bool everGrounded = false;
 	
 	void Start() {
 		body = GetComponent<Rigidbody>();
@@ -27,6 +29,12 @@ public class PlayerMove : MonoBehaviour {
 	}
 
 	void FixedUpdate() {
+		// Only allow movement after touching ground for the first time (so we can control intros)
+		everGrounded |= groundCheck.OnGround;
+		if (!everGrounded) {
+			return;
+		}
+
 		var horizontal = Input.GetAxis("Horizontal");
 		var tryMove = Mathf.Abs(horizontal) >= 0.001f;
 		var direction = horizontal < 0 ? -1 : 1;
@@ -108,7 +116,7 @@ public class PlayerMove : MonoBehaviour {
 	}
 
 	public string GetAnimParam() {
-		if (Mathf.Abs(body.velocity.x) >= 0.001f) {
+		if (body != null && Mathf.Abs(body.velocity.x) >= 0.001f) {
 			if (ActiveMoveData == runData) { return "Run"; }
 			else if (ActiveMoveData == sprintData) { return "RunFast"; }
 			else if (ActiveMoveData == brakeData) { return "Idle"; }

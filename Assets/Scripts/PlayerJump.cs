@@ -31,6 +31,8 @@ public class PlayerJump : MonoBehaviour {
 	public bool sprintJumpShowing = false;
 	public bool brakeJumpShowing = false;
 
+	private bool audioLandingCheck = false;
+
 	void Start() {
 		body = GetComponent<Rigidbody>();
 		groundCheck = GetComponent<GroundCheck>();
@@ -69,6 +71,7 @@ public class PlayerJump : MonoBehaviour {
 					jumpStartY = body.position.y;
 					jumpHolding = true;
 					jumpHoldDuration = 0;
+					AudioManager.Instance.PlayJumpClip();
 					jumpReady = false;
 				} else if (jumpHolding) {
 					jumping = true;
@@ -99,6 +102,16 @@ public class PlayerJump : MonoBehaviour {
 
 		if (!body.isKinematic && body.velocity.y * -1 > Mathf.Abs(fallTerminalVelocity)) {
 			body.velocity = new Vector3(body.velocity.x, Mathf.Abs(fallTerminalVelocity) * -1, 0);
+		}
+
+		if (!groundCheck.OnGround && !audioLandingCheck)
+		{
+			audioLandingCheck = true;
+		}
+		else if (groundCheck.OnGround && audioLandingCheck)
+		{
+			AudioManager.Instance.PlayLandClip();
+			audioLandingCheck = false;
 		}
 
 		// TODO remove

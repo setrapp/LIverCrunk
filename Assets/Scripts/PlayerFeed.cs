@@ -40,6 +40,7 @@ public class PlayerFeed : MonoBehaviour {
 		body.isKinematic = true;
 		player.IgnoreDamage(true);
 		StartCoroutine(feed(harvest));
+		AudioManager.Instance.PlaySwallowClip();
 	}
 
 	private IEnumerator feed(HarvestPoint harvest) {

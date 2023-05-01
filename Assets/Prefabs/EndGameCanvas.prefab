@@ -714,7 +714,7 @@ GameObject:
   - component: {fileID: 3989629090603144561}
   - component: {fileID: 4984264342241124485}
   m_Layer: 5
-  m_Name: Btn
+  m_Name: Btn1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -790,6 +790,7 @@ GameObject:
   - component: {fileID: 5486416404999301809}
   - component: {fileID: 401569971806837287}
   - component: {fileID: 4734295060464075127}
+  - component: {fileID: 3178665125524742592}
   m_Layer: 0
   m_Name: EndGameCanvas
   m_TagString: Untagged
@@ -889,6 +890,23 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3178665125524742592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7760564677510435672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!1 &8330431140496993180
 GameObject:
   m_ObjectHideFlags: 0
@@ -1040,7 +1058,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294932988
+    rgba: 16742908
   m_fontColor: {r: 0.98849195, g: 0.4764151, b: 1, a: 0}
   m_enableVertexGradient: 0
   m_colorMode: 3

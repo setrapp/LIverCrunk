@@ -42,6 +42,7 @@ SpriteAtlas:
     - 72908b848b34cc447ba9f7adab29809c: 21300000
     - 9e50127796ab36f4d90928dd95880f25: 21300000
     - 80bc7f873dc0eda4b80e0d8781ea310b: 21300000
+    - efea68d7f27fe3140a1fd63a4431c00e: 21300000
     - cebe0de8781efc64fbddc9e5441337ed: 21300000
     - b82873dd7ec0d6a42aec6c1d44a87b3a: 21300000
   m_MasterAtlas: {fileID: 0}
@@ -51,6 +52,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 72908b848b34cc447ba9f7adab29809c, type: 3}
   - {fileID: 21300000, guid: 9e50127796ab36f4d90928dd95880f25, type: 3}
   - {fileID: 21300000, guid: 80bc7f873dc0eda4b80e0d8781ea310b, type: 3}
+  - {fileID: 21300000, guid: efea68d7f27fe3140a1fd63a4431c00e, type: 3}
   - {fileID: 21300000, guid: cebe0de8781efc64fbddc9e5441337ed, type: 3}
   - {fileID: 21300000, guid: b82873dd7ec0d6a42aec6c1d44a87b3a, type: 3}
   m_PackedSpriteNamesToIndex:
@@ -59,6 +61,7 @@ SpriteAtlas:
   - Tire
   - Pipe
   - MotherLadderBack
+  - MotherLadderGroundFront
   - CautionCone 1
   - MotherLadderFront
   m_RenderDataMap: {}

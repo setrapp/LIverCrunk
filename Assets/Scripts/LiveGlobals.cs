@@ -12,6 +12,7 @@ public class LiveGlobals : MonoBehaviour {
 
 	public List<int> vesselIds = null;
 	public List<int> harvestedLiverIds = null;
+	public int maxHeldLivers = 1;
 	public List<Liver> heldLivers = null;
 	public List<Liver> givenLivers = null;
 	public int priorLiversGiven = 0;

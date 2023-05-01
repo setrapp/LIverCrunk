@@ -17,12 +17,11 @@ public class Player : MonoBehaviour {
 	public bool ignoreDamage = false;
 	public float maxHealthSeconds = 100;
 	private float health = 0;
-	public int maxLivers = 1;
 	public List<Liver> EatenLivers = new List<Liver>();
 
 	public float sceneChangeY = 100;
 
-	public bool LiverFull => EatenLivers.Count >= maxLivers;
+	public bool LiverFull => LiveGlobals.Instance != null ? (EatenLivers.Count >= LiveGlobals.Instance?.maxHeldLivers) : false;
 
 	public UnityEvent OnHit = null;
 	public UnityEvent OnDie = null;

@@ -193,7 +193,71 @@ MonoBehaviour:
     - Now, go and get me more liver!
     OnComplete:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 11400000}
+          m_TargetAssemblyTypeName: GlobalData, Assembly-CSharp
+          m_MethodName: AddLiverSlot
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - name: Delivery #7
+    startGame: 0
+    respawn: 0
+    emptyHanded: 0
+    outside: 0
+    victory: 0
+    minLivers: 7
+    maxLivers: 7
+    lines:
+    - A FEAST!
+    - ... for us both!
+    OnComplete:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 11400000}
+          m_TargetAssemblyTypeName: GlobalData, Assembly-CSharp
+          m_MethodName: AddLiverSlot
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - name: Delivery #13
+    startGame: 0
+    respawn: 0
+    emptyHanded: 0
+    outside: 0
+    victory: 0
+    minLivers: 13
+    maxLivers: 13
+    lines:
+    - Ahhh my little crunk,
+    - I see you appreciate my hunger
+    OnComplete:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 11400000}
+          m_TargetAssemblyTypeName: GlobalData, Assembly-CSharp
+          m_MethodName: AddLiverSlot
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   pickupFirstLiverLines:
   - Mmmm.. I smell liver.
   - Bring it back to my den!

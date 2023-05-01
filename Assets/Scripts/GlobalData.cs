@@ -30,6 +30,11 @@ public class GlobalData : ScriptableObject {
 			mother.AttemptVictory();
 		}
 	}
+
+	public void AddLiverSlot()
+	{
+		LiveGlobals.Instance.maxHeldLivers++;
+	}
 }
 
 [System.Serializable]

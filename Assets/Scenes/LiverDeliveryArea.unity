@@ -7135,6 +7135,7 @@ MonoBehaviour:
   playHud: {fileID: 3154367092454987504}
   fallingPlayer: {fileID: 1417113378}
   birthingPlayer: {fileID: 883661763}
+  mother: {fileID: 1679676699}
 --- !u!4 &1355861927
 Transform:
   m_ObjectHideFlags: 0
@@ -7785,7 +7786,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1679939643}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dbdc6829fbced40c095547b2b0cfe35a, type: 3}
   m_Name: 

@@ -58,9 +58,9 @@ public class LiveGlobals : MonoBehaviour {
 	}
 
 	public void Respawn() {
-		harvestedLiverIds.Clear();
+		//harvestedLiverIds.Clear();
 		heldLivers.Clear();
-		givenLivers.Clear();
+		//givenLivers.Clear();
 		respawning = true;
 	}
 

@@ -7,6 +7,7 @@ public class LiverDeliveryArea : MonoBehaviour {
 	public Canvas playHud = null;
 	public GameObject fallingPlayer = null;
 	public GameObject birthingPlayer = null;
+	public Mother mother = null;
 
 	private PlayerDisabler playerDisabler = null;
 
@@ -32,6 +33,7 @@ public class LiverDeliveryArea : MonoBehaviour {
 			if (LiveGlobals.Instance.respawning) {
 				//birthingPlayer.SetActive(true);
 				LiveGlobals.Instance.respawning = false;
+				mother.BarfPlayer();
 			} else {
 				fallingPlayer.SetActive(true);
 			}

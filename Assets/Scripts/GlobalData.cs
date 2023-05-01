@@ -10,15 +10,16 @@ public class GlobalData : ScriptableObject {
 	public string victoryScene = "";
 	public string collectionScene = "Playmat";
 	public List<MotherDialog> dialogs;
+	public List<string> pickupFirstLiverLines;
 }
 
 [System.Serializable]
 public class MotherDialog {
 	public string name;
-	public bool keepAfterUse;
 	public bool startGame;
 	public bool respawn;
 	public bool emptyHanded;
+	public bool outside;
 	public int minLivers;
 	public int maxLivers;
 	public List<string> lines;

@@ -11,6 +11,10 @@ public class Mother : MonoBehaviour {
 	public Image liverMeter = null;
 	public MotherState state = MotherState.Delivery;
 
+	void Update() {
+		maw.enabled = player.velocity.y <= 0;
+	}
+
 	public void DeliverLivers() {
 		GetComponent<Animator>().SetTrigger("Delivery");
 	}
@@ -35,13 +39,6 @@ public class Mother : MonoBehaviour {
 		LiveGlobals.Instance.AttemptReplenishHumans();
 
 		SpeakLines();
-
-		LiveGlobals.Instance.heldLivers.Clear();
-		LiveGlobals.Instance.vesselIds.Clear();
-	}
-
-	void Update() {
-		maw.enabled = player.velocity.y <= 0;
 	}
 
 	public void BarfPlayer() {
@@ -65,6 +62,9 @@ public class Mother : MonoBehaviour {
 				//text.GetComponentInParent<Animator>().SetTrigger("TextBox");
 			}
 		}
+
+		LiveGlobals.Instance.heldLivers.Clear();
+		LiveGlobals.Instance.vesselIds.Clear();
 	}
 
 	public void StopLines() {

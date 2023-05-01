@@ -52,23 +52,78 @@ MonoBehaviour:
   collectionScene: ClaysLevel
   dialogs:
   - name: StartGame
-    keepAfterUse: 1
     startGame: 1
     respawn: 0
     emptyHanded: 0
+    outside: 0
     minLivers: 0
     maxLivers: 1000
     lines:
-    - 'Young one, I am regenerating too slowly. '
+    - 'Little crunk, I am regenerating too slowly. '
     - 'Go fetch me more liver from the human town. '
     - 'Once you find a liver, hurry back. You do not have much time. '
   - name: ReturnWithoutLiver
-    keepAfterUse: 1
     startGame: 0
     respawn: 0
     emptyHanded: 1
+    outside: 0
     minLivers: 0
     maxLivers: 1000
     lines:
     - 'I''ll shrivel up if I don''t get more livers... '
     - 'Go now and get me some liver! '
+  - name: Respawn
+    startGame: 0
+    respawn: 1
+    emptyHanded: 0
+    outside: 0
+    minLivers: 0
+    maxLivers: 1000
+    lines:
+    - Oh, that simply won't do!
+  - name: Delivery Fallback
+    startGame: 0
+    respawn: 0
+    emptyHanded: 0
+    outside: 0
+    minLivers: 0
+    maxLivers: 1000
+    lines:
+    - "... *slurrrrp* \u2026 *gulp*"
+    - ......  *gurgle* ... MOOOORE!
+  - name: Delivery #1
+    startGame: 0
+    respawn: 0
+    emptyHanded: 0
+    outside: 0
+    minLivers: 1
+    maxLivers: 1
+    lines:
+    - Well done,
+    - I forgot how sweet these can be.
+    - 'Now bring me more! '
+  - name: Delivery #2
+    startGame: 0
+    respawn: 0
+    emptyHanded: 0
+    outside: 0
+    minLivers: 2
+    maxLivers: 2
+    lines:
+    - 'Awwwwghhff-shhuu-hwaaaahhhh!!!! '
+    - 'BRING MOOOORE!!! '
+  - name: Delivery #3
+    startGame: 0
+    respawn: 0
+    emptyHanded: 0
+    outside: 0
+    minLivers: 3
+    maxLivers: 3
+    lines:
+    - 'BWAAAAAAHH!!! '
+    - 'Good job little crunk. '
+    - You can now carry more livers in one run.
+    - Now, go and get me more liver!
+  pickupFirstLiverLines:
+  - Mmmm.. I smell liver.
+  - Bring it back to my den!

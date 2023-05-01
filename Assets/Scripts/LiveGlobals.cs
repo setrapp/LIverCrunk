@@ -72,12 +72,20 @@ public class LiveGlobals : MonoBehaviour {
 			if (worstLiverHeld == null || liver.Worth < worstLiverHeld.Worth) {
 				worstLiverHeld = liver;
 			}
+
+			if (givenLivers.Count < 1) {
+				var motherText = FindObjectOfType<MotherText>();
+				if (motherText != null) {
+					motherText.AddLines(data.pickupFirstLiverLines);
+				}
+			}
 		}
 	}
 
 	public MotherDialog GetMotherDialog(MotherState state) {
 		MotherDialog bestDialog = null;
 		foreach (var dialog in data.dialogs) {
+			if (dialog.outside) { continue; }
 			switch (state) {
 				case MotherState.StartGame:
 					if (dialog.startGame) { bestDialog = dialog; }
@@ -105,7 +113,6 @@ public class LiveGlobals : MonoBehaviour {
 			}
 		}
 
-		if (bestDialog != null && !bestDialog.keepAfterUse) { data.dialogs.Remove(bestDialog); }
 		return bestDialog;
 	}
 

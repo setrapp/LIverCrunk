@@ -6,11 +6,16 @@ public class LiveGlobals : MonoBehaviour {
 	private static LiveGlobals instance = null;
 	public static LiveGlobals Instance => instance;
 	public GlobalData data = null;
+	public float GoalLiverWorth => data?.goalLiverWorth > 0 ? data.goalLiverWorth : ((float)vesselIds.Count) - 0.5f;
 
+	public List<int> vesselIds = null;
+	private bool registeredVessels = false;
 	public List<int> harvestedLiverIds = null;
 	public List<Liver> heldLivers = null;
 	public List<Liver> givenLivers = null;
+	public int priorLiversGiven = 0;
 	public bool respawning = false;
+	public Liver worstLiverHeld = null;
 
 	public Player player = null;
 
@@ -53,14 +58,69 @@ public class LiveGlobals : MonoBehaviour {
 		return true;
 	}
 
-	public void HarvestLiver(int id) {
-		harvestedLiverIds.Add(id);
+	public void RegisterLiverVessel(HarvestPoint vessel) {
+		if (registeredVessels || vessel == null) { return; }
+		if (!vesselIds.Contains(vessel.harvestId)) {
+			vesselIds.Add(vessel.harvestId);
+		} else {
+			Debug.LogError($"Attempting to register a second Liver Vessel with ID {vessel.harvestId}", vessel.vessel);
+		}
+	}
+
+	public void HarvestLiver(int id, Liver liver) {
+		if (liver != null) {
+			heldLivers.Add(liver);
+			if (worstLiverHeld == null || liver.Worth < worstLiverHeld.Worth) {
+				worstLiverHeld = liver;
+			}
+		}
+	}
+
+	public MotherDialog GetMotherDialog(MotherState state) {
+		MotherDialog bestDialog = null;
+		foreach (var dialog in data.dialogs) {
+			switch (state) {
+				case MotherState.StartGame:
+					if (dialog.startGame) { bestDialog = dialog; }
+					break;
+				case MotherState.Respawn:
+					if (dialog.respawn
+							&& dialog.minLivers <= priorLiversGiven && dialog.maxLivers >= priorLiversGiven
+							&& (bestDialog == null || (dialog.minLivers > bestDialog.minLivers || dialog.maxLivers < bestDialog.maxLivers)))
+					{
+						bestDialog = dialog;
+					}
+					break;
+				case MotherState.Delivery:
+					if (dialog.emptyHanded && heldLivers.Count < 1) {
+						bestDialog = dialog;
+					}
+					else if (!dialog.startGame && !dialog.respawn && !dialog.emptyHanded
+							&& dialog.minLivers <= givenLivers.Count && dialog.maxLivers >= givenLivers.Count
+							&& (bestDialog == null || (dialog.minLivers > bestDialog.minLivers || dialog.maxLivers < bestDialog.maxLivers)))
+					{
+						//todo check quality
+						bestDialog = dialog;
+					}
+					break;
+			}
+		}
+
+		if (bestDialog != null && !bestDialog.keepAfterUse) { data.dialogs.Remove(bestDialog); }
+		return bestDialog;
+	}
+
+	public void AttemptReplenishHumans() {
+		if (harvestedLiverIds.Count >= data.humanReplenishThreshold) {
+			// TODO only matters if we care about quality
+		}
 	}
 
 	public void Respawn() {
 		//harvestedLiverIds.Clear();
 		heldLivers.Clear();
 		//givenLivers.Clear();
+		priorLiversGiven = 0;
 		respawning = true;
 	}
 

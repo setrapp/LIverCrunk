@@ -1,7 +1,7 @@
 using UnityEngine;
 
 public class HarvestPoint : MonoBehaviour{
-	public int harvestId = 0;
+	public int harvestId = -1;
 	public GameObject vessel;
 	public float harvestRadius = 10f;
 	public float minHarvestHeight = 3f;
@@ -9,8 +9,13 @@ public class HarvestPoint : MonoBehaviour{
 	public Liver liverPrefab = null;
 
 	void Awake() {
-		if (LiveGlobals.Instance != null && LiveGlobals.Instance.harvestedLiverIds.Contains(harvestId)) {
-			Destroy(vessel);
+		if (harvestId < 0) { harvestId = 1000 + vessel.transform.GetSiblingIndex(); }
+		if (LiveGlobals.Instance != null) {
+			if (LiveGlobals.Instance.harvestedLiverIds.Contains(harvestId)) {
+				Destroy(vessel);
+			} else {
+				LiveGlobals.Instance.RegisterLiverVessel(this);
+			}
 		}
 	}
 
@@ -25,9 +30,10 @@ public class HarvestPoint : MonoBehaviour{
 
 	public Liver Harvest() {
 		die.Die();
-		LiveGlobals.Instance.HarvestLiver(harvestId);
 		if (liverPrefab != null) {
-			return Instantiate(liverPrefab, transform.position, Quaternion.identity);
+			var newLiver = Instantiate(liverPrefab, transform.position, Quaternion.identity);
+			LiveGlobals.Instance.HarvestLiver(harvestId, newLiver);
+			return newLiver;
 		}
 		return null;
 	}

@@ -674,7 +674,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -7289,6 +7289,28 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3557537856772897489, guid: 7d601e48114824fee855896b40ef1791, type: 3}
   m_PrefabInstance: {fileID: 1417113377}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1417113386 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8289978845676968114, guid: 7d601e48114824fee855896b40ef1791, type: 3}
+  m_PrefabInstance: {fileID: 1417113377}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1417113378}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53a0daf5a46a24272ba15ae43f15f5dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1417113387 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5540837658383363465, guid: 7d601e48114824fee855896b40ef1791, type: 3}
+  m_PrefabInstance: {fileID: 1417113377}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1417113378}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ab9b3030a0ad4c9989443edff18a1c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1486431251
 GameObject:
   m_ObjectHideFlags: 0
@@ -7895,6 +7917,7 @@ MonoBehaviour:
   - {fileID: 7990700313038717926}
   - {fileID: 1679939650}
   liverMeter: {fileID: 404098536}
+  state: 2
 --- !u!1 &1679939643
 GameObject:
   m_ObjectHideFlags: 0
@@ -8038,9 +8061,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textBox: {fileID: 712711577}
   text: {fileID: 451175494}
-  lines:
-  - Hello my little Crunk.
-  - LIVER ME!
   OnStartTalking:
     m_PersistentCalls:
       m_Calls:
@@ -8071,6 +8091,9 @@ MonoBehaviour:
           m_StringArgument: NoTextBox
           m_BoolArgument: 0
         m_CallState: 2
+  WhileWaitingToLeave:
+    m_PersistentCalls:
+      m_Calls:
       - m_Target: {fileID: 883661765}
         m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
         m_MethodName: set_enabled
@@ -8542,8 +8565,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textBox: {fileID: 8217514400654704093}
   text: {fileID: 8212060856278951319}
-  lines:
-  - Do better than the last Crunk.
   OnStartTalking:
     m_PersistentCalls:
       m_Calls:
@@ -8573,6 +8594,33 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: NoTextBox
           m_BoolArgument: 0
+        m_CallState: 2
+  WhileWaitingToLeave:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1417113387}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1417113386}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 883661765}
         m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
@@ -8653,7 +8701,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0

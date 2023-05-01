@@ -3,11 +3,13 @@ using UnityEngine;
 public class Liver : MonoBehaviour {
 	public LiverData data;
 	public Animator anim;
+	public int id = -1;
 	private PlayerFeed eater;
 
 	private float health = 0;
 
 	public float HealthPortion => health / data.maxHealthSeconds;
+	public float Worth => 1;//health;
 
 	void Start() {
 		if (anim == null) {

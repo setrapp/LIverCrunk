@@ -25,6 +25,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6616641022733581420, guid: 0ae43dd598b5b4fe7af3b45df304ecd9, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6616641022733581420, guid: 0ae43dd598b5b4fe7af3b45df304ecd9, type: 3}
       propertyPath: runJumpData
       value: 
       objectReference: {fileID: 11400000, guid: 769a46916d4b3459292d0c5be6d05f56, type: 2}
@@ -40,6 +44,10 @@ PrefabInstance:
       propertyPath: sprintJumpData
       value: 
       objectReference: {fileID: 11400000, guid: 769a46916d4b3459292d0c5be6d05f56, type: 2}
+    - target: {fileID: 7223191459503524183, guid: 0ae43dd598b5b4fe7af3b45df304ecd9, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7301971699091533239, guid: 0ae43dd598b5b4fe7af3b45df304ecd9, type: 3}
       propertyPath: m_UseGravity
       value: 1

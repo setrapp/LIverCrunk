@@ -33,7 +33,7 @@ Transform:
   - {fileID: 3069293237667356748}
   - {fileID: 7388052941633458700}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &8563056787145519153
 Animator:
@@ -115,7 +115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27a435f8883664b868047786f1f94e77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  harvestId: 0
+  harvestId: -1
   vessel: {fileID: 539735954943561691}
   harvestRadius: 10
   minHarvestHeight: 3

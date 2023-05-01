@@ -9,21 +9,35 @@ public class Mother : MonoBehaviour {
 	public List<MotherText> texts;
 
 	public Image liverMeter = null;
+	public MotherState state = MotherState.Delivery;
 
-	void Start() {
+
+	public void DeliverLivers() {
+		GetComponent<Animator>().SetTrigger("Delivery");
+	}
+
+	public void AcknowledgeDelivery() {
 		if (LiveGlobals.Instance != null) {
 			for (int i = 0; i < LiveGlobals.Instance.heldLivers.Count; i++) {
 				LiveGlobals.Instance.givenLivers.Add(LiveGlobals.Instance.heldLivers[i]);
+				LiveGlobals.Instance.harvestedLiverIds.Add(LiveGlobals.Instance.heldLivers[i].id);
 			}
-			LiveGlobals.Instance.heldLivers.Clear();
+			LiveGlobals.Instance.priorLiversGiven += LiveGlobals.Instance.heldLivers.Count;
 
 			var liverWorth = 0f;
 			for (int i = 0; i < LiveGlobals.Instance.givenLivers.Count; i++) {
-				liverWorth += LiveGlobals.Instance.givenLivers[i]?.HealthPortion ?? 0;
+				liverWorth += LiveGlobals.Instance.givenLivers[i]?.Worth ?? 0;
 			}
 
-			liverMeter.fillAmount = liverWorth / LiveGlobals.Instance.data.goalLiverWorth;
+			liverMeter.fillAmount = liverWorth / LiveGlobals.Instance.GoalLiverWorth;
+			Debug.Log(LiveGlobals.Instance.GoalLiverWorth);
 		}
+
+		LiveGlobals.Instance.AttemptReplenishHumans();
+
+		SpeakLines();
+
+		LiveGlobals.Instance.heldLivers.Clear();
 	}
 
 	void Update() {
@@ -42,10 +56,12 @@ public class Mother : MonoBehaviour {
 			player.transform.localPosition = new Vector3(player.transform.localPosition.x, -3, player.transform.localPosition.z);
 		}
 
+		MotherDialog bestDialog = LiveGlobals.Instance.GetMotherDialog(state);
+		List<string> lines = bestDialog?.lines ?? null;
 		foreach (var text in texts) {
 			if (text != null && text.gameObject.activeSelf) {
-				text.AddLines(null);
-				text.OnStartTalking.Invoke();
+				text.AddLines(lines);
+				//text.OnStartTalking.Invoke();
 				//text.GetComponentInParent<Animator>().SetTrigger("TextBox");
 			}
 		}
@@ -60,3 +76,11 @@ public class Mother : MonoBehaviour {
 
 	}
 }
+
+[System.Serializable]
+public enum MotherState {
+	StartGame = 0,
+	Respawn,
+	Delivery,
+}
+

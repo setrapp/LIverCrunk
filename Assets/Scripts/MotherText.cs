@@ -6,12 +6,15 @@ using TMPro;
 public class MotherText : MonoBehaviour {
 	public GameObject textBox = null;
 	public TextMeshProUGUI text = null;
-	public List<string> lines = null;
+	private List<string> lines = new List<string>();
 
 	private int lineIndex = 0;
 
 	public UnityEvent OnStartTalking;
 	public UnityEvent OnStopTalking;
+	public UnityEvent WhileWaitingToLeave;
+
+	bool linesChecked = false;
 
 	void Update() {
 		if (lines.Count > 0) {
@@ -27,17 +30,22 @@ public class MotherText : MonoBehaviour {
 			}
 		} else {
 			textBox.SetActive(false);
+			if (linesChecked) {
+				WhileWaitingToLeave.Invoke();
+			}
 		}
 	}
 
 	public void AddLines(List<string> newLines) {
+		linesChecked = true;
 		bool wasTalking = lines.Count > 0;
 		if (newLines != null && newLines.Count > 0) {
 			lines.AddRange(newLines);
 		}
 
-		if (!wasTalking && lines.Count > 0) {
-			OnStartTalking.Invoke();
+		if (!wasTalking) {
+			if (lines.Count > 0) { OnStartTalking.Invoke(); }
+			else { OnStopTalking.Invoke(); }
 		}
 	}
 	

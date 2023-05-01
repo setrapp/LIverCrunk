@@ -26,18 +26,21 @@ public class LiverDeliveryArea : MonoBehaviour {
 
 		if (firstScene) {
 			mainMenu.gameObject.SetActive(true);
+			mother.state = MotherState.StartGame;
 			//birthingPlayer.SetActive(true);
 			//if (playerDisabler != null ) { playerDisabler.ToggleDisable(true); }
 		} else {
 			playHud.gameObject.SetActive(true);
 			var motherText = playHud.GetComponentInChildren<MotherText>();
-			if (motherText != null) { motherText.AddLines(null); }
 			if (LiveGlobals.Instance.respawning) {
 				//birthingPlayer.SetActive(true);
 				LiveGlobals.Instance.respawning = false;
+				mother.state = MotherState.Respawn;
 				mother.BarfPlayer();
 			} else {
 				fallingPlayer.SetActive(true);
+				mother.state = MotherState.Delivery;
+				mother.DeliverLivers();
 			}
 		}
 	}

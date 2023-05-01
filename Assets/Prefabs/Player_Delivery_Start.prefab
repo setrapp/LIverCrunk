@@ -24,10 +24,6 @@ PrefabInstance:
       propertyPath: jumpStart.y
       value: 130
       objectReference: {fileID: 0}
-    - target: {fileID: 5540837658383363465, guid: 7d601e48114824fee855896b40ef1791, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5685227137767508918, guid: 7d601e48114824fee855896b40ef1791, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -78,10 +74,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6476259882070774865, guid: 7d601e48114824fee855896b40ef1791, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8289978845676968114, guid: 7d601e48114824fee855896b40ef1791, type: 3}
-      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

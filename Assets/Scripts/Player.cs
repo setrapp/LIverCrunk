@@ -62,7 +62,6 @@ public class Player : MonoBehaviour {
 		liver.gameObject.SetActive(false);
 		liver.transform.SetParent(LiveGlobals.Instance.transform);
 		EatenLivers.Add(liver);
-		LiveGlobals.Instance.heldLivers.Add(liver);
 
 		if (Hud.Instance != null) {
 			Hud.Instance.AddLiver(liver);

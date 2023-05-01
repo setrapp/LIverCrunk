@@ -9,9 +9,9 @@ public class SlimeDropper : MonoBehaviour {
 	{
 		slime.Stop();
 
-		slime.startDelay = startDelay;
 		var slimeMain = slime.main;
 		slimeMain.duration = duration;
+		slimeMain.startDelay = startDelay;
 
 		slime.Play();
 	}

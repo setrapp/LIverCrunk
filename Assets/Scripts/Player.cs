@@ -15,7 +15,6 @@ public class Player : MonoBehaviour {
 	private float health = 0;
 	public int maxLivers = 1;
 	public List<Liver> EatenLivers = new List<Liver>();
-	public Transform liverSack = null;
 
 	public float sceneChangeY = 100;
 
@@ -56,8 +55,9 @@ public class Player : MonoBehaviour {
 
 	public void StashLiver(Liver liver) {
 		liver.gameObject.SetActive(false);
-		liver.transform.SetParent(liverSack);
+		liver.transform.SetParent(LiveGlobals.Instance.transform);
 		EatenLivers.Add(liver);
+		LiveGlobals.Instance.heldLivers.Add(liver);
 
 		Hud.Instance.AddLiver(liver);
 

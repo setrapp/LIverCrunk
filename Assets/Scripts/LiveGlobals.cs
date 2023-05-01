@@ -8,6 +8,7 @@ public class LiveGlobals : MonoBehaviour {
 	public GlobalData data = null;
 
 	public List<int> harvestedLiverIds = null;
+	public List<Liver> heldLivers = null;
 	public List<Liver> givenLivers = null;
 	public bool respawning = false;
 
@@ -58,6 +59,7 @@ public class LiveGlobals : MonoBehaviour {
 
 	public void Respawn() {
 		harvestedLiverIds.Clear();
+		heldLivers.Clear();
 		givenLivers.Clear();
 		respawning = true;
 	}

@@ -11229,7 +11229,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1429626428649389527, guid: 104203f19675d4949b9abe5ed97d5595, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5093465667513917673, guid: 104203f19675d4949b9abe5ed97d5595, type: 3}
       propertyPath: minLineDuration

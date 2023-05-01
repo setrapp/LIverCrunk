@@ -41,6 +41,7 @@ SpriteAtlas:
     - 16d662b3719cafd4ba074700cc97bfd4: 21300000
     - 72908b848b34cc447ba9f7adab29809c: 21300000
     - 94339b6533da586419d786f34a143dcd: 21300000
+    - bcab1d75c14e6d842a27a434dec77bcf: 21300000
     - 7d6bde17c4f84a54693e1b77f26d2386: 21300000
     - 9e50127796ab36f4d90928dd95880f25: 21300000
     - 80bc7f873dc0eda4b80e0d8781ea310b: 21300000
@@ -54,6 +55,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 16d662b3719cafd4ba074700cc97bfd4, type: 3}
   - {fileID: 21300000, guid: 72908b848b34cc447ba9f7adab29809c, type: 3}
   - {fileID: 21300000, guid: 94339b6533da586419d786f34a143dcd, type: 3}
+  - {fileID: 21300000, guid: bcab1d75c14e6d842a27a434dec77bcf, type: 3}
   - {fileID: 21300000, guid: 7d6bde17c4f84a54693e1b77f26d2386, type: 3}
   - {fileID: 21300000, guid: 9e50127796ab36f4d90928dd95880f25, type: 3}
   - {fileID: 21300000, guid: 80bc7f873dc0eda4b80e0d8781ea310b, type: 3}
@@ -66,6 +68,7 @@ SpriteAtlas:
   - CautionCone
   - Tire
   - Star
+  - Plant
   - Tree
   - Pipe
   - MotherLadderBack

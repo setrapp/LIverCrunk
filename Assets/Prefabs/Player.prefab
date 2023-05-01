@@ -69,7 +69,7 @@ MonoBehaviour:
   maxLivers: 1
   EatenLivers: []
   liverSack: {fileID: 6773011269841288172}
-  sceneChangeY: 100
+  sceneChangeY: -1
   OnDie:
     m_PersistentCalls:
       m_Calls:

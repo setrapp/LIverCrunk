@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6114070662357642395}
   - component: {fileID: 6627090753194834721}
   - component: {fileID: 460446066776470305}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: SmokeFx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4837,7 +4837,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 850749203553920656}
-  m_Layer: 6
+  - component: {fileID: 404177848313152385}
+  m_Layer: 8
   m_Name: DeathTiles_3x3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4860,8 +4861,21 @@ Transform:
   - {fileID: 3713489243864599225}
   - {fileID: 6114070662357642395}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &404177848313152385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3483489568812837972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d693740839744723a1ae556ac7ada3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: 75953f46ff22543f9b5b6372feafaa53, type: 2}
 --- !u!1 &6447114169165717454
 GameObject:
   m_ObjectHideFlags: 0
@@ -4874,8 +4888,8 @@ GameObject:
   - component: {fileID: 1659157504401133091}
   - component: {fileID: 6299234323494017115}
   - component: {fileID: 1550261654026061601}
-  m_Layer: 6
-  m_Name: Block
+  m_Layer: 8
+  m_Name: SlimeBlock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4977,7 +4991,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3713489243864599225}
   - component: {fileID: 378737954823678203}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Tile
   m_TagString: Untagged
   m_Icon: {fileID: 0}

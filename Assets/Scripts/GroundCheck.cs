@@ -22,13 +22,12 @@ public class GroundCheck : MonoBehaviour {
 		}
 	}
 
-
 	void FixedUpdate() {
 		midRay.origin = transform.position;
 		backRay.origin = transform.position + (transform.right * -sideRayOffset);
 		frontRay.origin = transform.position + (transform.right * sideRayOffset);
 
-		var req_layer = LayerMask.GetMask("Platform");
+		var req_layer = LayerMask.GetMask("Platform", "DamageGround");
 
 		midGrounded = backGrounded = frontGrounded = false;
 		RaycastHit midHit, backHit, frontHit;

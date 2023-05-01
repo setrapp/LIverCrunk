@@ -10,6 +10,10 @@ public class Player : MonoBehaviour {
 	public Rigidbody body;
 
 	private bool godMode = false;
+	private bool processingHit = false;
+	public bool ProcessingHit => processingHit;
+	private float hitTime;
+	public float processHitDuration = 1;
 	public bool ignoreDamage = false;
 	public float maxHealthSeconds = 100;
 	private float health = 0;
@@ -66,8 +70,8 @@ public class Player : MonoBehaviour {
 		IgnoreDamage(false);
 	}
 
-	public void SoakDamage(float damage) {
-		var respectDamage = !ignoreDamage;
+	public void SoakDamage(float damage, bool isHit = true) {
+		var respectDamage = !ignoreDamage && (!isHit || !processingHit);
 #if UNITY_EDITOR
 		respectDamage &= !godMode;
 #endif
@@ -75,6 +79,7 @@ public class Player : MonoBehaviour {
 		if (respectDamage) {
 			if (damage <= health) {
 				health -= damage;
+				if (isHit) { ToggleHit(true); }
 			} else {
 				damage -= health;
 				health = 0;
@@ -86,7 +91,7 @@ public class Player : MonoBehaviour {
 
 				if (damage > 0 && GetComponent<GroundCheck>().OnGround) {
 					Die();
-				}
+				} else if (isHit) { ToggleHit(true); }
 			}
 		}
 	}
@@ -102,6 +107,30 @@ public class Player : MonoBehaviour {
 		ignoreDamage = ignore;
 	}
 
+	public void EndHit() {
+		ToggleHit(false);
+	}
+
+	public void ToggleHit(bool showHit) {
+		if (showHit) { hitTime = Time.time; }
+		processingHit = showHit;
+	}
+
+	void OnParticleCollision(GameObject other) { CheckCollisionDamage(other); }
+	void OnCollisionEnter(Collision collision) { CheckCollisionDamage(collision.collider.gameObject); }
+	void OnCollisionStay(Collision collision) { CheckCollisionDamage(collision.collider.gameObject); }
+	void CheckCollisionDamage(GameObject other) {
+		Debug.Log(other.layer + " " + LayerMask.LayerToName(other.layer));
+		if (other.layer == LayerMask.NameToLayer("Damage") || other.layer == LayerMask.NameToLayer("DamageGround")) {
+			var damageSource = other.GetComponentInParent<DamageSource>();
+			if (damageSource != null) {
+				SoakDamage(damageSource.data.damage, true);
+				//Debug.Log($"DAMAGE FROM {other.name}");
+			}
+		}
+	}
+
+
 	void Update()
 	{
 		if (sceneChangeY <= 0) {
@@ -114,9 +143,11 @@ public class Player : MonoBehaviour {
 			}
 		}
 
+		if (Time.time - hitTime > processHitDuration) { EndHit(); }
+
 		//TODO shouldn't all the Fixed updates use fixed delta time
 		if (!ignoreDamage) {
-			SoakDamage(Time.deltaTime);
+			SoakDamage(Time.deltaTime, false);
 		
 			if (Hud.Instance != null) {
 				Hud.Instance.UpdateHealth(health / maxHealthSeconds, EatenLivers);

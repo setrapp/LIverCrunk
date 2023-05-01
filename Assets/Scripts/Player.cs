@@ -24,6 +24,7 @@ public class Player : MonoBehaviour {
 
 	public bool LiverFull => EatenLivers.Count >= maxLivers;
 
+	public UnityEvent OnHit = null;
 	public UnityEvent OnDie = null;
 
 	void Awake() {
@@ -112,7 +113,10 @@ public class Player : MonoBehaviour {
 	}
 
 	public void ToggleHit(bool showHit) {
-		if (showHit) { hitTime = Time.time; }
+		if (showHit) {
+			hitTime = Time.time;
+			OnHit.Invoke();
+		}
 		processingHit = showHit;
 	}
 
@@ -120,7 +124,7 @@ public class Player : MonoBehaviour {
 	void OnCollisionEnter(Collision collision) { CheckCollisionDamage(collision.collider.gameObject); }
 	void OnCollisionStay(Collision collision) { CheckCollisionDamage(collision.collider.gameObject); }
 	void CheckCollisionDamage(GameObject other) {
-		Debug.Log(other.layer + " " + LayerMask.LayerToName(other.layer));
+		//Debug.Log(other.layer + " " + LayerMask.LayerToName(other.layer));
 		if (other.layer == LayerMask.NameToLayer("Damage") || other.layer == LayerMask.NameToLayer("DamageGround")) {
 			var damageSource = other.GetComponentInParent<DamageSource>();
 			if (damageSource != null) {

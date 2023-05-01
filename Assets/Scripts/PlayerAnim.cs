@@ -13,9 +13,7 @@ public class PlayerAnim : MonoBehaviour {
 	void Update() {
 		var nextPose = "Idle";
 
-		if (player.ProcessingHit) {
-			nextPose = "Hit";
-		} else if (groundCheck.OnGround) {
+		if (groundCheck.OnGround) {
 			nextPose = playerMove.GetAnimParam();
 		} else {
 			if (playerFeed != null && playerFeed.IsFeeding) {

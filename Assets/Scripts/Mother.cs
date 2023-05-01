@@ -49,6 +49,7 @@ public class Mother : MonoBehaviour {
 
 			var endFill = Mathf.Clamp(liverWorth / LiveGlobals.Instance.GoalLiverWorth, 0, roomForPlayer);
 
+
 			if (fillMeterDuration > 0 && endFill - startFill > 0.0001f) {
 				var liveringDuration = 0f;
 				while (liveringDuration < fillMeterDuration) {
@@ -62,7 +63,7 @@ public class Mother : MonoBehaviour {
 			if (liverWorth >= LiveGlobals.Instance.GoalLiverWorth) {
 				LiveGlobals.Instance.sufficientLivers = true;
 			}
-			//Debug.Log(LiveGlobals.Instance.GoalLiverWorth);
+			//Debug.Log(liverWorth + " " + LiveGlobals.Instance.GoalLiverWorth);
 		}
 
 		LiveGlobals.Instance.AttemptReplenishHumans();

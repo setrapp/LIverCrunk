@@ -3,7 +3,7 @@ using UnityEngine;
 public class AutoWin : MonoBehaviour {
 	void Start() {
 #if UNITY_EDITOR
-		LiveGlobals.Instance.data.goalLiverWorth = 0.5f;
+		LiveGlobals.Instance.autoWin = true;
 #else
 		Destroy(this);
 #endif 

@@ -6,7 +6,9 @@ public class LiveGlobals : MonoBehaviour {
 	private static LiveGlobals instance = null;
 	public static LiveGlobals Instance => instance;
 	public GlobalData data = null;
-	public float GoalLiverWorth => data?.goalLiverWorth > 0 ? data.goalLiverWorth : ((float)vesselIds.Count) - 0.5f;
+
+	public bool autoWin = false;
+	public float GoalLiverWorth => autoWin ? 0.5f : data?.goalLiverWorth > 0 ? data.goalLiverWorth : ((float)vesselIds.Count) - 0.5f;
 
 	public List<int> vesselIds = null;
 	public List<int> harvestedLiverIds = null;

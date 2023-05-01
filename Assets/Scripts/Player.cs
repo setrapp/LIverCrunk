@@ -59,7 +59,9 @@ public class Player : MonoBehaviour {
 		EatenLivers.Add(liver);
 		LiveGlobals.Instance.heldLivers.Add(liver);
 
-		Hud.Instance.AddLiver(liver);
+		if (Hud.Instance != null) {
+			Hud.Instance.AddLiver(liver);
+		}
 
 		IgnoreDamage(false);
 	}
@@ -82,7 +84,7 @@ public class Player : MonoBehaviour {
 					}
 				}
 
-				if (damage > 0) {
+				if (damage > 0 && GetComponent<GroundCheck>().OnGround) {
 					Die();
 				}
 			}
@@ -90,6 +92,7 @@ public class Player : MonoBehaviour {
 	}
 
 	public void Die() {
+		ignoreDamage = true;
 		var body = GetComponent<Rigidbody>();
 		if (body != null) { body.isKinematic = true; }
 		OnDie.Invoke();

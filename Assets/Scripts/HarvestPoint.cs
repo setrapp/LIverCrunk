@@ -2,10 +2,17 @@ using UnityEngine;
 
 public class HarvestPoint : MonoBehaviour{
 	public int harvestId = 0;
+	public GameObject vessel;
 	public float harvestRadius = 10f;
 	public float minHarvestHeight = 3f;
 	public NpcDie die = null;
 	public Liver liverPrefab = null;
+
+	void Awake() {
+		if (LiveGlobals.Instance != null && LiveGlobals.Instance.harvestedLiverIds.Contains(harvestId)) {
+			Destroy(vessel);
+		}
+	}
 
 	void Update() {
 		if (PlayerFeed.Instance != null && PlayerFeed.Instance.CanFeed) {

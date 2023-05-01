@@ -9,6 +9,8 @@ public class MotherText : MonoBehaviour {
 	private List<string> lines = new List<string>();
 
 	private int lineIndex = 0;
+	public float minLineDuration = 0;
+	private float lineStartTime = 0;
 
 	public UnityEvent OnStartTalking;
 	public UnityEvent OnStopTalking;
@@ -16,16 +18,25 @@ public class MotherText : MonoBehaviour {
 
 	bool linesChecked = false;
 
+	private List<UnityEvent> onCompleteEvents = new List<UnityEvent>();
+
 	void Update() {
 		if (lines.Count > 0) {
 			textBox.SetActive(true);
 			text.text = lines[0];
 
-			if (Input.GetMouseButtonDown(0) || Input.GetKeyDown("space")) {
-				lines.RemoveAt(0);
+			if (Time.time - lineStartTime > minLineDuration) {
+				if (Input.GetMouseButtonDown(0) || Input.GetKeyDown("space")) {
+					lines.RemoveAt(0);
+					lineStartTime = Time.time;
+				}
 			}
 
 			if (lines.Count < 1) {
+				foreach (var ev in onCompleteEvents) {
+					if (ev != null) { ev.Invoke(); }
+				}
+
 				OnStopTalking.Invoke();
 			}
 		} else {
@@ -36,8 +47,11 @@ public class MotherText : MonoBehaviour {
 		}
 	}
 
-	public void AddLines(List<string> newLines) {
+	public void AddLines(List<string> newLines) { AddLines(newLines, null); }
+	public void AddLines(List<string> newLines, UnityEvent onComplete) {
+		lineStartTime = Time.time;
 		linesChecked = true;
+		if (onComplete != null ) { onCompleteEvents.Add(onComplete); }
 		bool wasTalking = lines.Count > 0;
 		if (newLines != null && newLines.Count > 0) {
 			lines.AddRange(newLines);

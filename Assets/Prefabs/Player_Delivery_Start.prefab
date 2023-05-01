@@ -28,10 +28,6 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 5685227137767508918, guid: 7d601e48114824fee855896b40ef1791, type: 3}
-      propertyPath: jumpStart.x
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6476259882070774865, guid: 7d601e48114824fee855896b40ef1791, type: 3}
       propertyPath: m_RootOrder
       value: 0

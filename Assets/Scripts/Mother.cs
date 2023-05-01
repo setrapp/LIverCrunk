@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections.Generic;
 
 public class Mother : MonoBehaviour {
@@ -7,8 +8,24 @@ public class Mother : MonoBehaviour {
 	public Collider maw = null;
 	public List<MotherText> texts;
 
-	void Update()
-	{
+	public Image liverMeter = null;
+
+	void Start() {
+		if (LiveGlobals.Instance != null) {
+			for (int i = 0; i < LiveGlobals.Instance.heldLivers.Count; i++) {
+				LiveGlobals.Instance.givenLivers.Add(LiveGlobals.Instance.heldLivers[i]);
+			}
+
+			var liverWorth = 0f;
+			for (int i = 0; i < LiveGlobals.Instance.givenLivers.Count; i++) {
+				liverWorth += LiveGlobals.Instance.givenLivers[i]?.HealthPortion ?? 0;
+			}
+
+			liverMeter.fillAmount = liverWorth / LiveGlobals.Instance.data.goalLiverWorth;
+		}
+	}
+
+	void Update() {
 		maw.enabled = player.velocity.y <= 0;
 	}
 

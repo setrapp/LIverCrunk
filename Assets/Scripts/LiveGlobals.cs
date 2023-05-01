@@ -6,7 +6,9 @@ public class LiveGlobals : MonoBehaviour {
 	private static LiveGlobals instance = null;
 	public static LiveGlobals Instance => instance;
 	public GlobalData data = null;
-	public float GoalLiverWorth => data?.goalLiverWorth > 0 ? data.goalLiverWorth : ((float)vesselIds.Count) - 0.5f;
+
+	public bool autoWin = false;
+	public float GoalLiverWorth => autoWin ? 0.5f : data?.goalLiverWorth > 0 ? data.goalLiverWorth : ((float)vesselIds.Count) - 0.5f;
 
 	public List<int> vesselIds = null;
 	public List<int> harvestedLiverIds = null;
@@ -15,6 +17,7 @@ public class LiveGlobals : MonoBehaviour {
 	public int priorLiversGiven = 0;
 	public bool respawning = false;
 	public Liver worstLiverHeld = null;
+	public bool sufficientLivers = false;
 
 	public Player player = null;
 
@@ -72,12 +75,22 @@ public class LiveGlobals : MonoBehaviour {
 			if (worstLiverHeld == null || liver.Worth < worstLiverHeld.Worth) {
 				worstLiverHeld = liver;
 			}
+
+			if (givenLivers.Count < 1) {
+				var motherText = FindObjectOfType<MotherText>();
+				if (motherText != null) {
+					motherText.AddLines(data.pickupFirstLiverLines);
+				}
+			}
 		}
 	}
 
 	public MotherDialog GetMotherDialog(MotherState state) {
 		MotherDialog bestDialog = null;
+		var earlyOut = false;
 		foreach (var dialog in data.dialogs) {
+			if (earlyOut) { break; }
+			if (dialog.outside) { continue; }
 			switch (state) {
 				case MotherState.StartGame:
 					if (dialog.startGame) { bestDialog = dialog; }
@@ -91,10 +104,15 @@ public class LiveGlobals : MonoBehaviour {
 					}
 					break;
 				case MotherState.Delivery:
-					if (dialog.emptyHanded && heldLivers.Count < 1) {
+					if (dialog.victory && sufficientLivers) {
+						earlyOut = true;
 						bestDialog = dialog;
 					}
-					else if (!dialog.startGame && !dialog.respawn && !dialog.emptyHanded
+					else if (dialog.emptyHanded && heldLivers.Count < 1) {
+						earlyOut = true;
+						bestDialog = dialog;
+					}
+					else if (!dialog.startGame && !dialog.respawn && !dialog.emptyHanded && !dialog.victory
 							&& dialog.minLivers <= givenLivers.Count && dialog.maxLivers >= givenLivers.Count
 							&& (bestDialog == null || (dialog.minLivers > bestDialog.minLivers || dialog.maxLivers < bestDialog.maxLivers)))
 					{
@@ -105,7 +123,6 @@ public class LiveGlobals : MonoBehaviour {
 			}
 		}
 
-		if (bestDialog != null && !bestDialog.keepAfterUse) { data.dialogs.Remove(bestDialog); }
 		return bestDialog;
 	}
 
@@ -121,6 +138,12 @@ public class LiveGlobals : MonoBehaviour {
 		//givenLivers.Clear();
 		priorLiversGiven = 0;
 		respawning = true;
+	}
+
+	void OnDestroy() {
+		if (instance == this) {
+			instance = null;
+		}
 	}
 
 }

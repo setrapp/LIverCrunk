@@ -6,6 +6,10 @@ public class PlayerJumpStart : MonoBehaviour {
 
 	void Start()
 	{
-		GetComponent<Rigidbody>().velocity = jumpStart;
+		Jump(1);
+	}
+
+	public void Jump(float portion) {
+		GetComponent<Rigidbody>().velocity = jumpStart * portion;
 	}
 }

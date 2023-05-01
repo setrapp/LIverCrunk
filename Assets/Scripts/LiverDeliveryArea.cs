@@ -53,6 +53,12 @@ public class LiverDeliveryArea : MonoBehaviour {
 		SceneManager.LoadScene(LiveGlobals.CollectionScene);
 	}
 
+	public void Replay() {
+		var replayScene = LiveGlobals.DeliveryScene;
+		Destroy(LiveGlobals.Instance.gameObject);
+		SceneManager.LoadScene(replayScene);
+	}
+
 	public void Quit() {
 		Application.Quit();
 	}

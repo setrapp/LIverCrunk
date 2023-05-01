@@ -1,6 +1,7 @@
 using UnityEngine;
 
 public class HarvestPoint : MonoBehaviour{
+	public int harvestId = 0;
 	public float harvestRadius = 10f;
 	public float minHarvestHeight = 3f;
 	public NpcDie die = null;
@@ -17,6 +18,7 @@ public class HarvestPoint : MonoBehaviour{
 
 	public Liver Harvest() {
 		die.Die();
+		LiveGlobals.Instance.HarvestLiver(harvestId);
 		if (liverPrefab != null) {
 			return Instantiate(liverPrefab, transform.position, Quaternion.identity);
 		}

@@ -166,6 +166,7 @@ GameObject:
   - component: {fileID: 5222082375692570323}
   - component: {fileID: 2190849664923934532}
   - component: {fileID: 7124784589208301284}
+  - component: {fileID: 5093465667513917673}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -189,7 +190,7 @@ RectTransform:
   - {fileID: 8432825030295792789}
   - {fileID: 6240863655790770442}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -301,6 +302,51 @@ MonoBehaviour:
   maxSpillPos: 393.2
   minSpillPos: 49.7
   hudLiver: {fileID: 975830778003806361}
+--- !u!114 &5093465667513917673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1429626428649389527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbdc6829fbced40c095547b2b0cfe35a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textBox: {fileID: 8217514400516311009}
+  text: {fileID: 8212060856148893611}
+  lines: []
+  OnStartTalking:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2190849664923934532}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: SetTrigger
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: TextBox
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnStopTalking:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2190849664923934532}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: ResetTrigger
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: TextBox
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1528164782237465401
 GameObject:
   m_ObjectHideFlags: 0
@@ -614,7 +660,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0

@@ -5,25 +5,36 @@ public class LiverDeliveryArea : MonoBehaviour {
 	public LiveGlobals globalsPrefab = null;
 	public Canvas mainMenu = null;
 	public Canvas playHud = null;
+	public GameObject fallingPlayer = null;
+	public GameObject birthingPlayer = null;
 
 	private PlayerDisabler playerDisabler = null;
 
 	void Start() {
 		mainMenu.gameObject.SetActive(false);
 		playHud.gameObject.SetActive(false);
+		fallingPlayer.SetActive(false);
+		birthingPlayer.SetActive(false);
 
 		bool firstScene = false;
 		if (globalsPrefab != null) {
 			firstScene = globalsPrefab.InitIntoScene();
 		}
 
-		playerDisabler = FindObjectOfType<PlayerDisabler>();
+		//playerDisabler = FindObjectOfType<PlayerDisabler>();
 
 		if (firstScene) {
 			mainMenu.gameObject.SetActive(true);
-			if (playerDisabler != null ) { playerDisabler.ToggleDisable(true); }
+			//birthingPlayer.SetActive(true);
+			//if (playerDisabler != null ) { playerDisabler.ToggleDisable(true); }
 		} else {
 			playHud.gameObject.SetActive(true);
+			if (LiveGlobals.Instance.respawning) {
+				//birthingPlayer.SetActive(true);
+				LiveGlobals.Instance.respawning = false;
+			} else {
+				fallingPlayer.SetActive(true);
+			}
 		}
 	}
 

@@ -44,6 +44,8 @@ SpriteAtlas:
     - bb438e685eb304e499d4dd7352227ebc: 21300000
     - 9c10210949da29540b09b074e52c2086: 21300000
     - ba5d16bb4e06c204f9e296c1a16172d4: 21300000
+    - 159be68c0afb54348891b750ca93c15d: 21300000
+    - 85fef36d4888be14c90c296f1164fde5: 21300000
     - bef89a7e7063125488be17433791faab: 21300000
     - 1f36b1de023fccf49bf6c12975c5f874: 21300000
     - e7ce36ee99512c446beee1797390d1e0: 21300000
@@ -61,6 +63,8 @@ SpriteAtlas:
   - {fileID: 21300000, guid: bb438e685eb304e499d4dd7352227ebc, type: 3}
   - {fileID: 21300000, guid: 9c10210949da29540b09b074e52c2086, type: 3}
   - {fileID: 21300000, guid: ba5d16bb4e06c204f9e296c1a16172d4, type: 3}
+  - {fileID: 21300000, guid: 159be68c0afb54348891b750ca93c15d, type: 3}
+  - {fileID: 21300000, guid: 85fef36d4888be14c90c296f1164fde5, type: 3}
   - {fileID: 21300000, guid: bef89a7e7063125488be17433791faab, type: 3}
   - {fileID: 21300000, guid: 1f36b1de023fccf49bf6c12975c5f874, type: 3}
   - {fileID: 21300000, guid: e7ce36ee99512c446beee1797390d1e0, type: 3}
@@ -77,6 +81,8 @@ SpriteAtlas:
   - ui_DeliveryBar_MainFrame
   - ui_HealthBar_LiverIcon
   - ui_HealthBar_LiverFrame
+  - BTN2
+  - BTN_1
   - FeedCrunkLogo
   - ui_DeliveryBar_MainFrame_Fill
   - ui_HealthBar_MainFrame

@@ -56,6 +56,7 @@ SpriteAtlas:
     - 13fb1c88570ec1d4b8c6327344c35c9b: 21300000
     - 483f69f93e455284bb0a350f5cc426ea: 21300000
     - a0a4653cb5e43774c96d3628d39cbf3d: 21300000
+    - 182f740e50f6c1747b241648f7a4de38: 21300000
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
   - {fileID: 21300000, guid: d564aba18af9b5e4dbd4e6925eaa01ae, type: 3}
@@ -65,6 +66,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 13fb1c88570ec1d4b8c6327344c35c9b, type: 3}
   - {fileID: 21300000, guid: 483f69f93e455284bb0a350f5cc426ea, type: 3}
   - {fileID: 21300000, guid: a0a4653cb5e43774c96d3628d39cbf3d, type: 3}
+  - {fileID: 21300000, guid: 182f740e50f6c1747b241648f7a4de38, type: 3}
   m_PackedSpriteNamesToIndex:
   - Background_GreenSewer_1
   - Background_PurpleIndustry_2
@@ -73,6 +75,7 @@ SpriteAtlas:
   - Background_PurpleIndustry_1
   - Background_BlueCity_1
   - Background_LiverDeliveryArea
+  - EndGameBackground
   m_RenderDataMap: {}
   m_Tag: BKG
   m_IsVariant: 0

@@ -9,7 +9,6 @@ public class LiveGlobals : MonoBehaviour {
 	public float GoalLiverWorth => data?.goalLiverWorth > 0 ? data.goalLiverWorth : ((float)vesselIds.Count) - 0.5f;
 
 	public List<int> vesselIds = null;
-	private bool registeredVessels = false;
 	public List<int> harvestedLiverIds = null;
 	public List<Liver> heldLivers = null;
 	public List<Liver> givenLivers = null;
@@ -59,7 +58,7 @@ public class LiveGlobals : MonoBehaviour {
 	}
 
 	public void RegisterLiverVessel(HarvestPoint vessel) {
-		if (registeredVessels || vessel == null) { return; }
+		if (vessel == null) { return; }
 		if (!vesselIds.Contains(vessel.harvestId)) {
 			vesselIds.Add(vessel.harvestId);
 		} else {

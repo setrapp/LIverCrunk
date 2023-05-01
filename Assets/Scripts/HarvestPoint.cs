@@ -11,10 +11,9 @@ public class HarvestPoint : MonoBehaviour{
 	void Awake() {
 		if (harvestId < 0) { harvestId = 1000 + vessel.transform.GetSiblingIndex(); }
 		if (LiveGlobals.Instance != null) {
+			LiveGlobals.Instance.RegisterLiverVessel(this);
 			if (LiveGlobals.Instance.harvestedLiverIds.Contains(harvestId)) {
 				Destroy(vessel);
-			} else {
-				LiveGlobals.Instance.RegisterLiverVessel(this);
 			}
 		}
 	}
@@ -33,6 +32,7 @@ public class HarvestPoint : MonoBehaviour{
 		if (liverPrefab != null) {
 			var newLiver = Instantiate(liverPrefab, transform.position, Quaternion.identity);
 			LiveGlobals.Instance.HarvestLiver(harvestId, newLiver);
+			newLiver.id = harvestId;
 			return newLiver;
 		}
 		return null;

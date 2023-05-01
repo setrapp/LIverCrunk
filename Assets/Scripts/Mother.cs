@@ -11,7 +11,6 @@ public class Mother : MonoBehaviour {
 	public Image liverMeter = null;
 	public MotherState state = MotherState.Delivery;
 
-
 	public void DeliverLivers() {
 		GetComponent<Animator>().SetTrigger("Delivery");
 	}
@@ -30,7 +29,7 @@ public class Mother : MonoBehaviour {
 			}
 
 			liverMeter.fillAmount = liverWorth / LiveGlobals.Instance.GoalLiverWorth;
-			Debug.Log(LiveGlobals.Instance.GoalLiverWorth);
+			//Debug.Log(LiveGlobals.Instance.GoalLiverWorth);
 		}
 
 		LiveGlobals.Instance.AttemptReplenishHumans();
@@ -38,6 +37,7 @@ public class Mother : MonoBehaviour {
 		SpeakLines();
 
 		LiveGlobals.Instance.heldLivers.Clear();
+		LiveGlobals.Instance.vesselIds.Clear();
 	}
 
 	void Update() {

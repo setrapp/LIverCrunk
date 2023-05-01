@@ -15,7 +15,7 @@ public class Mother : MonoBehaviour {
 			for (int i = 0; i < LiveGlobals.Instance.heldLivers.Count; i++) {
 				LiveGlobals.Instance.givenLivers.Add(LiveGlobals.Instance.heldLivers[i]);
 			}
-			heldLiver.Clear();
+			LiveGlobals.Instance.heldLivers.Clear();
 
 			var liverWorth = 0f;
 			for (int i = 0; i < LiveGlobals.Instance.givenLivers.Count; i++) {

@@ -30,6 +30,8 @@ public class LiverDeliveryArea : MonoBehaviour {
 			//if (playerDisabler != null ) { playerDisabler.ToggleDisable(true); }
 		} else {
 			playHud.gameObject.SetActive(true);
+			var motherText = playHud.GetComponentInChildren<MotherText>();
+			if (motherText != null) { motherText.AddLines(null); }
 			if (LiveGlobals.Instance.respawning) {
 				//birthingPlayer.SetActive(true);
 				LiveGlobals.Instance.respawning = false;

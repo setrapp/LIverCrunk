@@ -472,6 +472,17 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &404098536 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4118227438669403955, guid: be24fb97966c2884384e7f3e694462f8, type: 3}
+  m_PrefabInstance: {fileID: 764955292}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &447296320
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7082,7 +7093,7 @@ MonoBehaviour:
   playHud: {fileID: 3154367092454987504}
   fallingPlayer: {fileID: 1417113378}
   birthingPlayer: {fileID: 883661763}
-  mother: {fileID: 0}
+  mother: {fileID: 1679676699}
 --- !u!4 &1355861927
 Transform:
   m_ObjectHideFlags: 0
@@ -7883,7 +7894,7 @@ MonoBehaviour:
   texts:
   - {fileID: 7990700313038717926}
   - {fileID: 1679939650}
-  liverMeter: {fileID: 0}
+  liverMeter: {fileID: 404098536}
 --- !u!1 &1679939643
 GameObject:
   m_ObjectHideFlags: 0
@@ -8531,13 +8542,62 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textBox: {fileID: 8217514400654704093}
   text: {fileID: 8212060856278951319}
-  lines: []
+  lines:
+  - Do better than the last Crunk.
   OnStartTalking:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2190849664802334072}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: SetTrigger
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: TextBox
+          m_BoolArgument: 1
+        m_CallState: 2
   OnStopTalking:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2190849664802334072}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: SetTrigger
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: NoTextBox
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 883661765}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 883661764}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &8212060856278951319
 MonoBehaviour:
   m_ObjectHideFlags: 0

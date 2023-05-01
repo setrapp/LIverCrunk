@@ -128,7 +128,8 @@ public class Player : MonoBehaviour {
 		if (other.layer == LayerMask.NameToLayer("Damage") || other.layer == LayerMask.NameToLayer("DamageGround")) {
 			var damageSource = other.GetComponentInParent<DamageSource>();
 			if (damageSource != null) {
-				SoakDamage(damageSource.data.damage, true);
+				if (damageSource.data.justDie) { Die(); }
+				else { SoakDamage(damageSource.data.damage, true); }
 				//Debug.Log($"DAMAGE FROM {other.name}");
 			}
 		}

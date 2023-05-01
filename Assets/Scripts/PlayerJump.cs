@@ -55,7 +55,7 @@ public class PlayerJump : MonoBehaviour {
 		} else {
 			bool tryJump = !jumpDisabled && Input.GetAxis("Jump") > 0;
 			if (tryJump) {
-				timeTryingJump += Time.deltaTime;
+				timeTryingJump += Time.fixedDeltaTime;
 			} else {
 				timeTryingJump = 0;
 			}
@@ -72,7 +72,7 @@ public class PlayerJump : MonoBehaviour {
 					jumpReady = false;
 				} else if (jumpHolding) {
 					jumping = true;
-					jumpHoldDuration += Time.deltaTime;
+					jumpHoldDuration += Time.fixedDeltaTime;
 				}
 			}
 

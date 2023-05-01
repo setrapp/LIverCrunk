@@ -37,6 +37,11 @@ public class Mother : MonoBehaviour {
 	}
 
 	public void SpeakLines() {
+		// In case the rigidbody failed to launch properly, manually place the player.
+		if (player != null && player.transform.localPosition.y < -3) {
+			player.transform.localPosition = new Vector3(player.transform.localPosition.x, -3, player.transform.localPosition.z);
+		}
+
 		foreach (var text in texts) {
 			if (text != null && text.gameObject.activeSelf) {
 				text.AddLines(null);

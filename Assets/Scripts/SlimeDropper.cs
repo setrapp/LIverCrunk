@@ -7,8 +7,12 @@ public class SlimeDropper : MonoBehaviour {
 
 	void Awake()
 	{
+		slime.Stop();
+
 		slime.startDelay = startDelay;
 		var slimeMain = slime.main;
 		slimeMain.duration = duration;
+
+		slime.Play();
 	}
 }

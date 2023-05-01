@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03e63d95091bf4787a8d1b5e484a5759, type: 3}
   m_Name: GlobalData
   m_EditorClassIdentifier: 
-  goalLiverWorth: 1
+  goalLiverWorth: -1
   humanReplenishThreshold: -1
   defaultJumpArc:
     serializedVersion: 2

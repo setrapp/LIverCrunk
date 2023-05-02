@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641228, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -716,6 +716,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 451175491}
   m_CullTransparentMesh: 1
+--- !u!95 &463161967 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6199102140647649708, guid: 602b7457b0afcc245b0385366df835df, type: 3}
+  m_PrefabInstance: {fileID: 1924181747}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &480364452
 GameObject:
   m_ObjectHideFlags: 0
@@ -7959,6 +7964,7 @@ MonoBehaviour:
   state: 2
   cameraAnimator: {fileID: 1323142990}
   victory: {fileID: 731370239}
+  liverDeliveryAnimator: {fileID: 463161967}
   fillMeterDuration: 0.5
 --- !u!1 &1679939643
 GameObject:

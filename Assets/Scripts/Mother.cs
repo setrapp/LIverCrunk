@@ -17,6 +17,8 @@ public class Mother : MonoBehaviour {
 	public Animator cameraAnimator;
 	public GameObject victory;
 
+	public Animator liverDeliveryAnimator = null;
+
 	public float fillMeterDuration = 1;
 
 	void Update() {
@@ -32,6 +34,11 @@ public class Mother : MonoBehaviour {
 	}
 
 	private IEnumerator acknowledgeDelivery() {
+		if (liverDeliveryAnimator != null) {
+			var liverDelivers = Mathf.Min(LiveGlobals.Instance.heldLivers.Count, 3);
+			liverDeliveryAnimator.SetTrigger($"Liver_{liverDelivers}");
+		}
+
 		if (LiveGlobals.Instance != null) {
 			var roomForPlayer = 0.9484f;
 			var liverWorth = 0f;

@@ -66,8 +66,7 @@ MonoBehaviour:
   body: {fileID: 0}
   processHitDuration: 1
   ignoreDamage: 0
-  maxHealthSeconds: 10
-  maxLivers: 1
+  maxHealthSeconds: 60
   EatenLivers: []
   sceneChangeY: -15
   OnHit:

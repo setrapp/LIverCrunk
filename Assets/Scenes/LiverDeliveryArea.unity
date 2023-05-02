@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641228, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -601,8 +601,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 27.522217, y: -40.0222}
-  m_SizeDelta: {x: 570.1262, y: 64.8597}
+  m_AnchoredPosition: {x: 27.522217, y: -27.5166}
+  m_SizeDelta: {x: 570.1262, y: 89.6399}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &451175493
 MonoBehaviour:
@@ -669,9 +669,9 @@ MonoBehaviour:
   m_fontSize: 36
   m_fontSizeBase: 36
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMax: 36
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -716,6 +716,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 451175491}
   m_CullTransparentMesh: 1
+--- !u!95 &463161967 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6199102140647649708, guid: 602b7457b0afcc245b0385366df835df, type: 3}
+  m_PrefabInstance: {fileID: 1924181747}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &480364452
 GameObject:
   m_ObjectHideFlags: 0
@@ -7959,6 +7964,7 @@ MonoBehaviour:
   state: 2
   cameraAnimator: {fileID: 1323142990}
   victory: {fileID: 731370239}
+  liverDeliveryAnimator: {fileID: 463161967}
   fillMeterDuration: 0.5
 --- !u!1 &1679939643
 GameObject:
@@ -8490,8 +8496,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 27.522217, y: -40.0222}
-  m_SizeDelta: {x: 570.1262, y: 64.8597}
+  m_AnchoredPosition: {x: 27.522217, y: -27.5166}
+  m_SizeDelta: {x: 570.1262, y: 89.6399}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &2190849664802334072
 Animator:
@@ -8872,7 +8878,8 @@ MonoBehaviour:
   liverSpillFx: {fileID: 0}
   maxSpillPos: 393.2
   minSpillPos: 49.7
-  hudLiver: {fileID: 0}
+  hudLiverFrames: []
+  hudLivers: []
 --- !u!114 &7990700313038717925
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9042,9 +9049,9 @@ MonoBehaviour:
   m_fontSize: 36
   m_fontSizeBase: 36
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMax: 36
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512

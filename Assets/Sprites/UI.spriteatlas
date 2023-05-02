@@ -40,7 +40,18 @@ SpriteAtlas:
     - 8a900370a99ad194cad076cb0a4a07ba: 21300000
     - 3e3320f23441b0a4a9f471d0c27a6acd: 21300000
     - b804449366574ae4bb0e960bb235e158: 21300000
+    - 3b434804431b67e4ea22d3f1e4537d7f: 21300000
+    - d194e65474c6c2b4a8c1d7522d57a68e: 21300000
     - c2fa04e502bd45940a1187ab08746d9c: 21300000
+    - 858e6d57ae7364944aebc9148c2cf6c8: 1096108052
+    - 858e6d57ae7364944aebc9148c2cf6c8: -1546868051
+    - 858e6d57ae7364944aebc9148c2cf6c8: 502137152
+    - 858e6d57ae7364944aebc9148c2cf6c8: -18890567
+    - 858e6d57ae7364944aebc9148c2cf6c8: 1433709673
+    - 858e6d57ae7364944aebc9148c2cf6c8: -546017219
+    - 858e6d57ae7364944aebc9148c2cf6c8: 72544945
+    - 858e6d57ae7364944aebc9148c2cf6c8: 64712051
+    - 858e6d57ae7364944aebc9148c2cf6c8: 694976583
     - bb438e685eb304e499d4dd7352227ebc: 21300000
     - 9c10210949da29540b09b074e52c2086: 21300000
     - ba5d16bb4e06c204f9e296c1a16172d4: 21300000
@@ -59,7 +70,18 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 8a900370a99ad194cad076cb0a4a07ba, type: 3}
   - {fileID: 21300000, guid: 3e3320f23441b0a4a9f471d0c27a6acd, type: 3}
   - {fileID: 21300000, guid: b804449366574ae4bb0e960bb235e158, type: 3}
+  - {fileID: 21300000, guid: 3b434804431b67e4ea22d3f1e4537d7f, type: 3}
+  - {fileID: 21300000, guid: d194e65474c6c2b4a8c1d7522d57a68e, type: 3}
   - {fileID: 21300000, guid: c2fa04e502bd45940a1187ab08746d9c, type: 3}
+  - {fileID: 1096108052, guid: 858e6d57ae7364944aebc9148c2cf6c8, type: 3}
+  - {fileID: -1546868051, guid: 858e6d57ae7364944aebc9148c2cf6c8, type: 3}
+  - {fileID: 502137152, guid: 858e6d57ae7364944aebc9148c2cf6c8, type: 3}
+  - {fileID: -18890567, guid: 858e6d57ae7364944aebc9148c2cf6c8, type: 3}
+  - {fileID: 1433709673, guid: 858e6d57ae7364944aebc9148c2cf6c8, type: 3}
+  - {fileID: -546017219, guid: 858e6d57ae7364944aebc9148c2cf6c8, type: 3}
+  - {fileID: 72544945, guid: 858e6d57ae7364944aebc9148c2cf6c8, type: 3}
+  - {fileID: 64712051, guid: 858e6d57ae7364944aebc9148c2cf6c8, type: 3}
+  - {fileID: 694976583, guid: 858e6d57ae7364944aebc9148c2cf6c8, type: 3}
   - {fileID: 21300000, guid: bb438e685eb304e499d4dd7352227ebc, type: 3}
   - {fileID: 21300000, guid: 9c10210949da29540b09b074e52c2086, type: 3}
   - {fileID: 21300000, guid: ba5d16bb4e06c204f9e296c1a16172d4, type: 3}
@@ -77,7 +99,18 @@ SpriteAtlas:
   - ui_HealthBar_LiverILarge
   - ui_HealthBar_LiverFrame_Glow
   - ui_TextBox
+  - CharacterHit1
+  - CharacterHit2
   - ui_DeliveryBar_LowerFrame
+  - MotherAnimation_5
+  - MotherAnimation_4
+  - MotherAnimation_7
+  - MotherAnimation_6
+  - MotherAnimation_1
+  - MotherAnimation_0
+  - MotherAnimation_3
+  - MotherAnimation_2
+  - MotherAnimation_8
   - ui_DeliveryBar_MainFrame
   - ui_HealthBar_LiverIcon
   - ui_HealthBar_LiverFrame

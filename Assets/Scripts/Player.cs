@@ -75,6 +75,8 @@ public class Player : MonoBehaviour {
 		respectDamage &= !godMode;
 #endif
 
+		damage *= LiveGlobals.Instance.damageRate;
+
 		if (respectDamage) {
 			if (damage <= health) {
 				health -= damage;

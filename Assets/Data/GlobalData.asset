@@ -238,8 +238,8 @@ MonoBehaviour:
     emptyHanded: 0
     outside: 0
     victory: 0
-    minLivers: 13
-    maxLivers: 13
+    minLivers: 1000
+    maxLivers: 1000
     lines:
     - Ahhh my little crunk,
     - I see you appreciate my hunger

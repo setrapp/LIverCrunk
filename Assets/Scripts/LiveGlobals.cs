@@ -20,6 +20,7 @@ public class LiveGlobals : MonoBehaviour {
 	public Liver worstLiverHeld = null;
 	public bool sufficientLivers = false;
 
+	public float damageRate = 1f;
 	public Player player = null;
 
 	public static string DeliveryScene => Instance?.data?.deliveryScene;

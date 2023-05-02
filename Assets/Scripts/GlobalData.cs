@@ -34,6 +34,8 @@ public class GlobalData : ScriptableObject {
 	public void AddLiverSlot()
 	{
 		LiveGlobals.Instance.maxHeldLivers++;
+
+		LiveGlobals.Instance.damageRate *= 0.75f;
 	}
 }
 

@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Healthy
   m_EditorClassIdentifier: 
   quality: 3
-  maxHealthSeconds: 10
+  maxHealthSeconds: 60

@@ -13,7 +13,7 @@ public class PlayerAnim : MonoBehaviour {
 	void Update() {
 		var nextPose = "Idle";
 
-		if (groundCheck.OnGround) {
+		if (groundCheck.OnGround && !playerFeed.IsFeeding) {
 			nextPose = playerMove.GetAnimParam();
 		} else {
 			if (playerFeed != null && playerFeed.IsFeeding) {
